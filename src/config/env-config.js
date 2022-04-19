@@ -46,6 +46,7 @@ export const serviceUrl = () => {
     console.log(process.env.REACT_APP_ENVIRONMENT);
 
     const environment = process.env.REACT_APP_ENVIRONMENT || ENV_LOCAL;
+    console.log(HOSTS[environment].API)
     return HOSTS[environment].API
 };
 

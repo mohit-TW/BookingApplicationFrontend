@@ -28,6 +28,12 @@
     color: #61dafb;
 }
 
+.movie-poster{
+    width: 80px;
+    height: 80px;
+    margin-right: 7px;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

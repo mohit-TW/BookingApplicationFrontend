@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {
-    Avatar,
     Backdrop,
     Button,
     CircularProgress,
@@ -10,8 +9,7 @@ import {
     ListItemText,
     Typography
 } from "@material-ui/core";
-import styles from "./styles/showsStyles"
-import LocalMoviesIcon from "@material-ui/icons/LocalMovies";
+import styles from "./styles/showsStyles";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import useShows from "./hooks/useShows";
@@ -20,6 +18,7 @@ import {dateFromSearchString, nextDateLocation, previousDateLocation} from "./se
 import ShowsRevenue from "./ShowsRevenue";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
+import "../../App.css";
 
 export default ({location, history}) => {
     const classes = styles();
@@ -37,7 +36,8 @@ export default ({location, history}) => {
             "id": "",
             "name": "",
             "duration": "",
-            "plot": ""
+            "plot": "",
+            "posterLink":""
         },
         "slot": {
             "id": "",
@@ -64,10 +64,9 @@ export default ({location, history}) => {
                                 setSelectedShow(show);
                                 setShowSelectSeatDialog(true);
                             }}>
-                                <ListItemAvatar classes={{root: classes.localMoviesIcon}}>
-                                    <Avatar>
-                                        <LocalMoviesIcon/>
-                                    </Avatar>
+                                <ListItemAvatar>
+                                <img className="movie-poster" src ={show.movie.posterLink} alt="Movie poster"/>
+
                                 </ListItemAvatar>
                                 <ListItemText primary={show.movie.name} secondary={
                                     <>

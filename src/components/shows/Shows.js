@@ -70,6 +70,7 @@ export default ({location, history}) => {
                                 </ListItemAvatar>
                                 <ListItemText primary={show.movie.name} secondary={
                                     <>
+                                        <ListItemText>
                                         <Typography
                                             component="span"
                                             variant="body2"
@@ -78,6 +79,19 @@ export default ({location, history}) => {
                                         >
                                             {show.slot.startTime}
                                         </Typography>
+                                        </ListItemText>
+                                        <ListItemText>
+                                        <Typography
+                                            component="span"
+                                            variant="subtitle2"
+                                            className={classes.imdbRating}
+                                        >
+                                            IMDb Rating: &thinsp;
+                                            {show.movie.imdbRating}
+                                        </Typography>
+                                        </ListItemText>
+
+
                                     </>
                                 }/>
                                 <ListItemText primary={`${INR_SYMBOL}${show.cost}`} className={classes.price}

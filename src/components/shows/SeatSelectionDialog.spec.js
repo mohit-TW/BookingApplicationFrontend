@@ -17,7 +17,8 @@ describe("Basic rendering and functionality", () => {
         movie: {
             name: "Movie 1",
             plot: "Suspense movie",
-            duration: "1hr 30m"
+            duration: "1hr 30m",
+            posterLink: "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_SX300.jpg"
         },
         slot: {startTime: "start time 1"}
     };

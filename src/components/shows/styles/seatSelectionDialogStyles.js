@@ -24,6 +24,9 @@ export default makeStyles((theme) =>
             justifyContent: "center",
             minWidth: "15%"
         },
+        imdbRating:{
+           color: '#545454'
+        },
         dialogMain: {
             display: "flex",
             padding: "0px 20px 20px 0px",

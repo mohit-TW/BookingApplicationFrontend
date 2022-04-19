@@ -2,3 +2,5 @@ fileignoreconfig:
 - filename: src/config/env-config.js
   checksum: fbf08d3f2f76031ac28ca5cb7c65294ba0d4de6c07d9f248f69e9dc9a417b69f
   ignore_detectors: [filename]
+- filename: src/components/shows/SeatSelectionDialog.spec.js
+  checksum: a8c57d77aca287100e6c8fbd8786330419ed0eacf66835b3bb2164f6e0b234b4

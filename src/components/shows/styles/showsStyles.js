@@ -38,6 +38,9 @@ export default makeStyles((theme) =>
             color: theme.palette.primary.main,
             fontWeight: "bold"
         },
+        imdbRating:{
+            color: '#bebebe'
+        },
         buttons: {
             display: "flex",
             justifyContent: 'space-between'

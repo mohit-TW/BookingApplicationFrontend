@@ -18,7 +18,7 @@ import {dateFromSearchString, nextDateLocation, previousDateLocation} from "./se
 import ShowsRevenue from "./ShowsRevenue";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
-import "../../App.css";
+import PosterDialog from "./PosterDialog";
 
 export default ({location, history}) => {
     const classes = styles();
@@ -28,6 +28,8 @@ export default ({location, history}) => {
     const {shows, showsLoading} = useShows(showsDate);
     const {showsRevenue, updateShowsRevenue, showsRevenueLoading} = useShowsRevenue(showsDate);
     const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
+    const [showPosterDialog, setShowPosterDialog] = useState(false);
+
     const emptyShow = {
         "id": "",
         "date": "",
@@ -47,6 +49,7 @@ export default ({location, history}) => {
         }
     };
     const [selectedShow, setSelectedShow] = useState(emptyShow);
+    const [selectedMoviePoster, setSelectedMoviePoster] = useState();
 
     return (
         <>
@@ -60,14 +63,19 @@ export default ({location, history}) => {
                 {
                     shows.map(show => (
                         <div key={show.id} className={classes.showContainer}>
-                            <ListItem style={{cursor: 'pointer'}} onClick={() => {
-                                setSelectedShow(show);
-                                setShowSelectSeatDialog(true);
-                            }}>
+                            <ListItem style={{cursor: 'pointer'}} >
                                 <ListItemAvatar>
-                                <img className={classes.moviePoster} src ={show.movie.posterLink} alt="Movie poster"/>
+
+                                <img className={classes.moviePoster} src ={show.movie.posterLink} alt="Movie poster"
+                                    onClick={()=>{
+                                            setShowPosterDialog(true);
+                                            setSelectedMoviePoster(show.movie.posterLink);}}/>
                                 </ListItemAvatar>
-                                <ListItemText primary={show.movie.name} secondary={
+                                <ListItemText onClick={() => {
+                                    setSelectedShow(show);
+                                    setShowSelectSeatDialog(true);
+                                    }}
+                                    primary={show.movie.name} secondary={
                                     <>
                                         <ListItemText>
                                         <Typography
@@ -105,6 +113,7 @@ export default ({location, history}) => {
             <SeatSelectionDialog selectedShow={selectedShow} updateShowsRevenue={updateShowsRevenue}
                                  open={showSelectSeatDialog}
                                  onClose={() => setShowSelectSeatDialog(false)}/>
+            <PosterDialog posterLink={selectedMoviePoster} open={showPosterDialog} onClose={() => setShowPosterDialog(false)} style={{zIndex:1}} />
 
             <div className={classes.buttons}>
                 <Button

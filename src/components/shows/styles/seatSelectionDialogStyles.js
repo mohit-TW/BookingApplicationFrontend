@@ -29,6 +29,12 @@ export default makeStyles((theme) =>
            fontWeight: "lighter",
            fontSize: '0.8em'
         },
+        moviePlot:{
+            color: '#545454',
+            fontWeight: "normal",
+            fontSize: '0.8em'
+        },
+
         dialogMain: {
             display: "flex",
             padding: "0px 20px 20px 0px",
@@ -61,10 +67,10 @@ export default makeStyles((theme) =>
         },
 
         moviePosterDialogbox: {
-            width: "80px",
-            height: "110px",
             marginRight: "7px",
-            marginLeft: "9px"
+            marginLeft: "9px",
+            maxHeight:"60%",
+            maxWidth:"70%"
         }
     })
 );

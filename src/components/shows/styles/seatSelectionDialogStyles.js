@@ -25,7 +25,9 @@ export default makeStyles((theme) =>
             minWidth: "15%"
         },
         imdbRating:{
-           color: '#545454'
+           color: '#545454',
+           fontWeight: "lighter",
+           fontSize: '0.8em'
         },
         dialogMain: {
             display: "flex",
@@ -56,6 +58,13 @@ export default makeStyles((theme) =>
         },
         dialogButton: {
             marginLeft: "15px"
+        },
+
+        moviePosterDialogbox: {
+            width: "80px",
+            height: "110px",
+            marginRight: "7px",
+            marginLeft: "9px"
         }
     })
 );

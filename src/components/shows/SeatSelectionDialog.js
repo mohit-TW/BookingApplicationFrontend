@@ -27,7 +27,7 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                     </Typography>
                     <div className={classes.dialogContent}>
                         <div className={classes.moviePicture}>
-                            <img className="movie-poster-dialogbox" src ={selectedShow.movie.posterLink} alt="Movie poster"/>
+                            <img className={classes.moviePosterDialogbox} src ={selectedShow.movie.posterLink} alt="Movie poster"/>
                         </div>
                         <div className={classes.dialogMain}>
                             <Typography className={classes.movieMarquee} color="primary">

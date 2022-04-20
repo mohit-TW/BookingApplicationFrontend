@@ -65,8 +65,7 @@ export default ({location, history}) => {
                                 setShowSelectSeatDialog(true);
                             }}>
                                 <ListItemAvatar>
-                                <img className="movie-poster" src ={show.movie.posterLink} alt="Movie poster"/>
-
+                                <img className={classes.moviePoster} src ={show.movie.posterLink} alt="Movie poster"/>
                                 </ListItemAvatar>
                                 <ListItemText primary={show.movie.name} secondary={
                                     <>

@@ -50,6 +50,7 @@ export default ({location, history}) => {
     };
     const [selectedShow, setSelectedShow] = useState(emptyShow);
     const [selectedMoviePoster, setSelectedMoviePoster] = useState();
+    const [selectedMovieName, setSelectedMovieName] = useState();
 
     return (
         <>
@@ -69,7 +70,9 @@ export default ({location, history}) => {
                                 <img className={classes.moviePoster} src ={show.movie.posterLink} alt="Movie poster"
                                     onClick={()=>{
                                             setShowPosterDialog(true);
-                                            setSelectedMoviePoster(show.movie.posterLink);}}/>
+                                            setSelectedMoviePoster(show.movie.posterLink);
+                                            setSelectedMovieName(show.movie.name);
+                                            }}/>
                                 </ListItemAvatar>
                                 <ListItemText onClick={() => {
                                     setSelectedShow(show);
@@ -113,7 +116,7 @@ export default ({location, history}) => {
             <SeatSelectionDialog selectedShow={selectedShow} updateShowsRevenue={updateShowsRevenue}
                                  open={showSelectSeatDialog}
                                  onClose={() => setShowSelectSeatDialog(false)}/>
-            <PosterDialog posterLink={selectedMoviePoster} open={showPosterDialog} onClose={() => setShowPosterDialog(false)} style={{zIndex:1}} />
+            <PosterDialog posterLink={selectedMoviePoster} name = {selectedMovieName} open={showPosterDialog} onClose={() => setShowPosterDialog(false)} style={{zIndex:1}} />
 
             <div className={classes.buttons}>
                 <Button

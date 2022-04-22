@@ -9,15 +9,20 @@ export default makeStyles((theme) =>
         },
         container: {
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            padding: "0 5px"
         },
         dialogHeader: {
             fontWeight: "bold",
-            padding: "10px 0px 20px 10px"
+            padding: "10px 0px 10px 15px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
         },
         dialogContent: {
             display: "flex",
-            flexDirection: "row"
+            flexDirection: "row",
+            marginLeft: "1%"
         },
         moviePicture: {
             justifyContent: "center",
@@ -41,8 +46,9 @@ export default makeStyles((theme) =>
             padding: "0px 20px 20px 0px",
             flexDirection: "column",
             justifyContent: "space-between",
-            minWidth: "85%",
-            maxWidth: "85%"
+            minWidth: "75%",
+            maxWidth: "78%",
+            marginLeft: "6%"
         },
         movieMarquee: {
             fontWeight: "bold"
@@ -68,8 +74,9 @@ export default makeStyles((theme) =>
         },
 
         moviePosterDialogbox: {
-            maxHeight:"83%",
-            maxWidth:"100%"
+                width: "130%",
+                height: "90%",
+
         }
     })
 );

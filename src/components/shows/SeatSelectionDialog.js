@@ -5,6 +5,8 @@ import styles from "./styles/seatSelectionDialogStyles"
 import CustomerDetailsDialog from "./CustomerDetailsDialog";
 import {INR_SYMBOL} from "../../Constants";
 import PropTypes from "prop-types";
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) => {
     const [showCustomerDetails, setShowCustomerDetails] = useState(false);
@@ -24,6 +26,9 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                 <div className={classes.container}>
                     <Typography variant="h6" className={classes.dialogHeader}>
                         Select Seats
+                        <IconButton onClick={handleClose}>
+                            <CloseIcon />
+                         </IconButton>
                     </Typography>
                     <div className={classes.dialogContent}>
                         <div className={classes.moviePicture}>

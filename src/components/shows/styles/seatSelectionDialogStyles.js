@@ -20,9 +20,10 @@ export default makeStyles((theme) =>
             flexDirection: "row"
         },
         moviePicture: {
-            display: "flex",
             justifyContent: "center",
-            minWidth: "15%"
+            minWidth: "15%",
+            marginLeft: "9px",
+            marginRight: "9px"
         },
         imdbRating:{
            color: '#545454',
@@ -67,10 +68,8 @@ export default makeStyles((theme) =>
         },
 
         moviePosterDialogbox: {
-            marginRight: "7px",
-            marginLeft: "9px",
-            maxHeight:"60%",
-            maxWidth:"70%"
+            maxHeight:"83%",
+            maxWidth:"100%"
         }
     })
 );

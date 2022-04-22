@@ -30,6 +30,9 @@ export default makeStyles((theme) =>
             width: '100%',
             backgroundColor: theme.palette.background.paper
         },
+        listItem: {
+            alignSelf: 'center',
+        },
         price: {
             display: 'flex',
             justifyContent: 'flex-end',
@@ -56,10 +59,9 @@ export default makeStyles((theme) =>
             padding: theme.spacing(2, 4, 3),
         },
         moviePoster: {
-            width: "80px",
-            height: "80px",
-            marginRight: "7px",
-            marginLeft: "5px"
+            width: "60px",
+            height: "75px",
+            margin: "7px",
         }
     })
 );

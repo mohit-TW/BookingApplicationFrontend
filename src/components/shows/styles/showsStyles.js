@@ -62,6 +62,7 @@ export default makeStyles((theme) =>
             width: "60px",
             height: "75px",
             margin: "7px",
+            display: "block"
         }
     })
 );

@@ -24,7 +24,7 @@ const PosterDialog = ({posterLink, name, open, onClose}) => {
                             <CloseIcon />
                          </IconButton>
                     </Typography>
-                <img src = {posterLink} alt="Poster"/>
+                <img src = {posterLink} alt={name + " Poster"}/>
                 </div>
             </div>
             </Dialog>

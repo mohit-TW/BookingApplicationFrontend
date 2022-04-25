@@ -67,7 +67,7 @@ export default ({location, history}) => {
                             <ListItem style={{cursor: 'pointer'}} >
                                 <ListItemAvatar>
 
-                                <img className={classes.moviePoster} src ={show.movie.posterLink} alt="Movie poster"
+                                <img className={classes.moviePoster} src ={show.movie.posterLink} alt={show.movie.name + " Poster"}
                                     onClick={()=>{
                                             setShowPosterDialog(true);
                                             setSelectedMoviePoster(show.movie.posterLink);

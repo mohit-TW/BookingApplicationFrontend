@@ -20,7 +20,7 @@ export const login = async (username, password) => {
     };
     const response = await axios.get(`${urls.service}/login`, config);
     const userDetails = response.data;
-    localStorage.setItem(tokenKey, token)
+    localStorage.setItem(tokenKey, token);
     return userDetails;
 }
 

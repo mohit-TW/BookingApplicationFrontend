@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-import {isLoggedIn, login, logout} from "../../../helpers/authService";
+import {isLoggedIn, login, logout } from "../../../helpers/authService";
 
 export default () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+
     useEffect(() => {
         setIsAuthenticated(isLoggedIn());
     }, []);
@@ -21,6 +22,6 @@ export default () => {
     return {
         isAuthenticated: isAuthenticated,
         handleLogin: handleLogin,
-        handleLogout: handleLogout
+        handleLogout: handleLogout,
     };
 }

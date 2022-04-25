@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
         },
         logoutLink: {
             display: 'flex',
-            justifyContent: "flex-start",
+            justifyContent: "flex-end",
             alignItems: "center",
             cursor: "pointer"
         },
@@ -27,6 +27,20 @@ export default makeStyles((theme) => ({
         cartButton: {
             color: "white",
             padding: "10px"
+        },
+        personProfileIcon: {
+            display: 'flex',
+            justifyContent: "flex-end",
+            alignItems: "center",
+            fontSize: '1.05em',
+            padding: "0 1em"
+        },
+        loggedIn:{
+            display: 'flex',
+            justifyContent: "space-between"
+        },
+        profileIcon:{
+            color: "white"
         }
     })
 );

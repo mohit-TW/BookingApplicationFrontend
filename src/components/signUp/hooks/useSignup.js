@@ -10,9 +10,7 @@ export default () => {
     const [phoneError, setPhoneError] = useState(false);
  
     const errorMessage = () => {
-        console.log(showError,phoneError);
         if (error!=='') {
-            console.log(error);
             return (
                 <Typography variant="body1" color="error" className={classes.signupErrorMessage}>
                     {
@@ -42,7 +40,6 @@ export default () => {
             history.goBack('/login');
         } catch (err) {
             if (err.response && err.response.status === 400) {
-                console.log(err.response.data);
                 if(err.response.data.details[0]==="Phone Number already exists")
                     setPhoneError(true)
                 else 

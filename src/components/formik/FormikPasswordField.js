@@ -17,7 +17,6 @@ const FormikPasswordField = (props) => {
 
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
-        console.log(showPassword);
         setShowPassword(!showPassword);
     };
 

@@ -19,6 +19,10 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
         }
     });
 
+    const handleClick = (history) => {
+        history.push('/signup');
+    }
+
     return (
         <div className={classes.loginContainer}>
             <Formik initialValues={initialValues}
@@ -56,9 +60,9 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 >
                                     Login
                                 </Button>
-                                {/* <div className={classes.signupLink}>
-                                    <Link className={classes.link} to='/signup'><span className={classes.newUserText}>New to SkyFox?</span>Signup here</Link>         
-                                </div> */}
+                                <div className={classes.signupLink}>
+                                    <p className={classes.link} onClick={() => handleClick(history)} style={{cursor:"pointer"}}><span className={classes.newUserText}>New to SkyFox?</span>Signup here</p>         
+                                </div>
                             </Form>
                         );
                     }

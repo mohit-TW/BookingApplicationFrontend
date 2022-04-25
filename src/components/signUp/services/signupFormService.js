@@ -36,7 +36,6 @@ export const formSchema = object({
 
 export default {
     create: async (payload) => {
-        console.log(payload);
         return await apiService.postSignup("signup", payload);
     },
 };

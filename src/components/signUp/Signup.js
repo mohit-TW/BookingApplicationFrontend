@@ -16,7 +16,6 @@ const Signup = ({ history }) => {
   
  const {errorMessage, handleSignup, showError, phoneError} = useSignup();
  const handleSubmit = (values) => {
-     console.log(values);
      handleSignup(values,history);
  }
   return (

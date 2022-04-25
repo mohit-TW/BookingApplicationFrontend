@@ -51,7 +51,6 @@ describe("Signup evaluation", ()=> {
 
         await act(() => handleSignup(signUpValues, history));
 
-        console.log("Error : ", result.current);
         const {errorMessage} = result.current;
         expect(signupFormService.create).toBeCalledTimes(1);
         expect(signupFormService.create).toHaveBeenCalledWith(signUpValues);

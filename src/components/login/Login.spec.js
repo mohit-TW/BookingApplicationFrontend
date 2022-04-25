@@ -42,15 +42,15 @@ describe("Basic Rendering", () => {
         expect(testHistory.replace).toHaveBeenCalledWith(testFrom);
     });
 
-    // it("should render login form when not authenticated", () => {
-    //     const loginComponent = mount(<Login isAuthenticated={false} onLogin={testOnLogin}
-    //                                         location={{state: {referrer: testReferrer}}}/>);
+    it("should render login form when not authenticated", () => {
+        const loginComponent = mount(<Login isAuthenticated={false} onLogin={testOnLogin}
+                                            location={{state: {referrer: testReferrer}}}/>);
 
-    //     const formikComponent = loginComponent.find(Formik);
-    //     const testErrorDivComponent = loginComponent.find(TestErrorComponent);
-    //     expect(testErrorDivComponent.length).toBe(1);
-    //     expect(formikComponent.prop("initialValues")).toBe("initialValues");
-    //     expect(formikComponent.prop("validationSchema")).toBe("formSchema");
-    //     expect(formikComponent.prop("onSubmit")).toEqual(testHandleLogin);
-    // });
+        const formikComponent = loginComponent.find(Formik);
+        const testErrorDivComponent = loginComponent.find(TestErrorComponent);
+        expect(testErrorDivComponent.length).toBe(1);
+        expect(formikComponent.prop("initialValues")).toBe("initialValues");
+        expect(formikComponent.prop("validationSchema")).toBe("formSchema");
+        expect(formikComponent.prop("onSubmit")).toEqual(testHandleLogin);
+    });
 });

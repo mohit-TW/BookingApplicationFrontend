@@ -9,7 +9,7 @@ fileignoreconfig:
 - filename: src/components/formik/FormikPasswordField.js
   checksum: 94785c748b2a96aaa467c8a22562c3e1e8d77e5af700d1df45b0e0aa325e2a8c
 - filename: src/components/signUp/hooks/useSignup.spec.js
-  checksum: 01a2dba8e8b3104671e5252dd1c6ea742aed1f069c467925954da7f2678db5af
+  checksum: 73b910e06d3da75957655d3cc8210723f478be0fb93454714e4d8403dd7114c2
 - filename: src/components/signUp/services/signupFormService.js
   checksum: a51d7f22bd5f0f27be36533061ff0f1ee4195d55da4ad348f0161bbfd12aecef
 - filename: src/components/user/ChangePasswordConfirmation.js

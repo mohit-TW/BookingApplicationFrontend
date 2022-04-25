@@ -7,10 +7,14 @@ import {INR_SYMBOL} from "../../Constants";
 import PropTypes from "prop-types";
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import PosterDialog from "./PosterDialog";
 
 const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) => {
     const [showCustomerDetails, setShowCustomerDetails] = useState(false);
     const [seats, setSeats] = useState("1");
+    const [showPosterDialog, setShowPosterDialog] = useState(false);
+    const [selectedMoviePoster, setSelectedMoviePoster] = useState();
+    const [selectedMovieName, setSelectedMovieName] = useState();
     const classes = styles();
 
     const handleClose = () => {
@@ -32,7 +36,14 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                     </Typography>
                     <div className={classes.dialogContent}>
                         <div className={classes.moviePicture}>
-                            <img className={classes.moviePosterDialogbox} src ={selectedShow.movie.posterLink} alt="Movie poster"/>
+                            <img className={classes.moviePosterDialogbox} src ={selectedShow.movie.posterLink} alt="Movie poster"
+                                onClick={()=>{
+                                setShowPosterDialog(true);
+                                setSelectedMoviePoster(selectedShow.movie.posterLink);
+                                setSelectedMovieName(selectedShow.movie.name);
+                                }}
+                            />
+                            <PosterDialog posterLink={selectedMoviePoster} name = {selectedMovieName} open={showPosterDialog} onClose={() => setShowPosterDialog(false)} style={{zIndex:1}} />
                         </div>
                         <div className={classes.dialogMain}>
                             <Typography className={classes.movieMarquee} color="primary">

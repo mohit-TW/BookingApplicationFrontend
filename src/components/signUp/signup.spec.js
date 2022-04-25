@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from './signUp'
+import Signup from './Signup'
 import {getByTestId, render} from '@testing-library/react';
 import '@testing-library/jest-dom'
 

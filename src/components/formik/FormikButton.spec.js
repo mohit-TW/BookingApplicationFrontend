@@ -1,8 +1,11 @@
 import React from "react";
 import { FormikButton } from ".";
 import { shallow } from "enzyme";
+//import {render} from "@testing-library/react";
 import { when } from "jest-when";
 import { useField } from "formik";
+import { Button } from "@material-ui/core";
+//import ShallowRenderer from 'react-test-renderer/shallow';
 
 jest.mock("formik");
 
@@ -21,7 +24,7 @@ describe("Basic rendering", () => {
 
     beforeEach(() => {
       btnProps = {
-        variant: "h6",
+        variant: "contained",
         type: "submit",
         color: "primary",
         name: "Testing Btn",
@@ -34,16 +37,32 @@ describe("Basic rendering", () => {
     //const formikButtonComponent = shallow(<FormikTextField testProp="test prop value" name="test field"
     //                                                              label="test label"/>);
 
+    //const renderer = new ShallowRenderer();
+    // renderer.render(<FormikButton
+    //     testProp="test prop value"
+    //     name="Testing Btn"
+    //     color="primary"
+    //     type="submit"
+    //     variant="contained"
+    //   />);
     const formikButtonComponent = shallow(
       <FormikButton
         testProp="test prop value"
         name="Testing Btn"
         color="primary"
         type="submit"
-        variant="h5"
+        variant="contained"
       />
     );
-
+    
+    const buttonComponent = formikButtonComponent.find(Button);
+    expect(buttonComponent.prop("color")).toBe("primary");
+    expect(buttonComponent.prop("testProp")).toBe("test prop value");
+    expect(buttonComponent.prop("name")).toBe("Testing Btn");
+    expect(buttonComponent.prop("type")).toBe("submit");
+    expect(buttonComponent.prop("variant")).toBe("contained");
+    
+    
     //expect(formikButtonComponent.prop("name")).toBe("Testing Btn");
   });
 });

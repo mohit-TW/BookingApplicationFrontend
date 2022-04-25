@@ -28,7 +28,6 @@ const RootRouter = ({ isAuthenticated, onLogin, handleLogout }) => {
         path="/userProfile"
         component={UserProfile}
         isAuthenticated={isAuthenticated}
-        onLogout={handleLogout}
       />
       <Route
         exact

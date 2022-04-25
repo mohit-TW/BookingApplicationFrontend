@@ -70,17 +70,19 @@ const ChangePasswordDialog = ({ open, onClose }) => {
       confirmNewPassword: passwordObjectList.confirmNewPasswordObject.value,
     };
 
+    let response;
     try {
-      const response = await changePasswordService.create(payload);
+       response = await changePasswordService.create(payload);
       //alert(" Password changed successfully !! ");
       //console.log("RESP: "+response.data.json());
-      console.log(response.status);
+      //console.log(response.status);
       setShowChangePasswordConfirmation(true);
       setStatus(true);
     } catch (err) {
       alert(" Old Password is wrong !! ");
       setStatus(false);
     } finally {
+      console.log(response);
       onClose();
     }
   };

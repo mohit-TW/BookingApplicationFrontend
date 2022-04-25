@@ -7,8 +7,6 @@ const FormikButton = (props) => {
     //const [field] = useField(props.name);
     //const {onClick} = field;
 
-    const {className, options, id,} = props;
-
   return (
     <FormControl>
       <Button /*data-testid={props.id}*/

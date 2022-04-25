@@ -6,6 +6,7 @@ import styles from "./styles/loginStyles"
 import PropTypes from "prop-types";
 import useLogin from "./hooks/useLogin";
 import {formSchema, initialValues} from "./services/loginFormService";
+import { Link, Router } from "react-router-dom";
 
 const Login = ({location, history, isAuthenticated, onLogin}) => {
     const classes = styles();
@@ -55,6 +56,9 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 >
                                     Login
                                 </Button>
+                                <div className={classes.signupLink}>
+                                    <Link className={classes.link} to='/signup'><span className={classes.newUserText}>New to SkyFox?</span>Signup here</Link>         
+                                </div>
                             </Form>
                         );
                     }

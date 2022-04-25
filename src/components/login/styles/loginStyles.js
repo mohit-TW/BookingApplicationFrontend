@@ -16,6 +16,18 @@ export default makeStyles((theme) =>
         },
         loginErrorMessage: {
             marginTop: "8px"
+        },
+        signupLink : {
+            marginTop: "12px",
+        },
+        link: {
+            textDecoration: "none",
+            color: '#9254C8',
+            fontWeight: "500",
+        },
+        newUserText : {
+            color: "black",
+            marginRight: "5px",
         }
     })
 );

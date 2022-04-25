@@ -6,6 +6,7 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import BlockIcon from '@material-ui/icons/Block';
 import {Error} from "../common";
 import {Login, ProtectedRoute} from "../login";
+import Signup from "../signUp/Signup";
 import PropTypes from "prop-types";
 import moment from "moment";
 
@@ -20,6 +21,9 @@ const RootRouter = ({isAuthenticated, onLogin}) => {
 
                 <Route exact path="/login"
                        component={(props) => <Login isAuthenticated={isAuthenticated} onLogin={onLogin} {...props}/>}/>
+                
+                <Route exact path="/signup"
+                       component={(props) => <Signup {...props}/>}/>
 
                 <Route exact path="/error" component={
                     () => <Error errorIcon={ErrorOutlineIcon} errorMessage={"Oops..Something went wrong"}/>

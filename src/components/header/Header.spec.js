@@ -57,8 +57,10 @@ describe("Basic rendering", () => {
       .at(0)
       .find("iconButton");
     console.log("icon" + userProfileTypographyComponent.context);
-    expect(userDivComponent.at(0).text().split(",").at(0)).toBe("Welcome");
+    console.log(userDivComponent.at(0).text().split(",")[0])
+    expect(userDivComponent.at(0).text().split(",")[0]).toBe("Welcome");
   });
+
 });
 
 // describe("Functional Rendering", () => {

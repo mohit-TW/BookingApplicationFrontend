@@ -28,7 +28,8 @@ export default {
     
     postSignup: async (path, payload) => {
         return promiseWithErrorHandling(axios.post(`${urls.service}/${path}`, payload));
-
+    },
+    
     put: async(path, payload) => {
         return axios.put(`${urls.service}/${path}`, payload, authHeader())
     }

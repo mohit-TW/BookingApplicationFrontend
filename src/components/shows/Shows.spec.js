@@ -9,6 +9,7 @@ import useShowsRevenue from "./hooks/useShowsRevenue";
 import {shallow} from "enzyme";
 import ShowsRevenue from "./ShowsRevenue";
 import FormikButton from "../formik/FormikButton";
+import ScheduleMovieDialog from "./ScheduleMovieDialog";
 
 jest.mock("./services/dateService", () => ({
     dateFromSearchString: jest.fn(),
@@ -29,6 +30,10 @@ jest.mock("./hooks/useShowsRevenue", () => ({
 jest.mock("./SeatSelectionDialog", () => {
     return () => <div>SeatSelection</div>;
 });
+
+jest.mock("./ScheduleMovieDialog", ()=> {
+    return() => <div>ScheduleMovie</div>
+})
 
 describe("Basic rendering and functionality", () => {
     let testHistory;
@@ -129,6 +134,7 @@ describe("Basic rendering and functionality", () => {
         expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
     })
 
+<<<<<<< HEAD
     it("Should display poster when rendered", () => {
         const {getAllByTestId} = render(<Shows history={testHistory} location={testLocation}/>);
         const posterLink = "http://dummy.jpg";
@@ -138,4 +144,15 @@ describe("Basic rendering and functionality", () => {
             expect(element.getAttribute("src")).toBe(posterLink);
         });
     });
+=======
+    it("should display the shedule movie dislog when schedule movie button is clicked", ()=>{
+        const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
+
+        expect(queryByText("ScheduleMovieDialog")).toBeNull();
+
+        fireEvent.click(getByText("SCHEDULE MOVIE"));
+
+        expect(getByText("ScheduleMovie")).toBeTruthy();
+    })
+>>>>>>> 7cbc6e9 (Trello#38 | [Rhea/Thejaswini] | Add . Schedule Movie functionality.)
 });

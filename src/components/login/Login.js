@@ -6,7 +6,6 @@ import styles from "./styles/loginStyles"
 import PropTypes from "prop-types";
 import useLogin from "./hooks/useLogin";
 import {formSchema, initialValues} from "./services/loginFormService";
-import { Link, Router } from "react-router-dom";
 
 const Login = ({location, history, isAuthenticated, onLogin}) => {
     const classes = styles();

@@ -10,8 +10,8 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ChangePasswordConfirmation from "./ChangePasswordConfirmation";
 
 const ChangePasswordDialog = ({ open, onClose }) => {
-
-  const [showChangePasswordConfirmation, setShowChangePasswordConfirmation] = useState(false);
+  const [showChangePasswordConfirmation, setShowChangePasswordConfirmation] =
+    useState(false);
   const [status, setStatus] = useState(false);
 
   const handleClose = () => {
@@ -28,7 +28,7 @@ const ChangePasswordDialog = ({ open, onClose }) => {
         shown: false,
         value: "",
       },
-    })
+    });
     onClose();
   };
 
@@ -62,7 +62,6 @@ const ChangePasswordDialog = ({ open, onClose }) => {
     confirmNewPassword: "",
   };
 
-
   const handleSubmit = async () => {
     const payload = {
       oldPassword: passwordObjectList.oldPasswordObject.value,
@@ -72,7 +71,7 @@ const ChangePasswordDialog = ({ open, onClose }) => {
 
     let response;
     try {
-       response = await changePasswordService.create(payload);
+      response = await changePasswordService.create(payload);
       //alert(" Password changed successfully !! ");
       //console.log("RESP: "+response.data.json());
       //console.log(response.status);
@@ -300,12 +299,15 @@ const ChangePasswordDialog = ({ open, onClose }) => {
           </Formik>
         </div>
       </Dialog>
-      <ChangePasswordConfirmation open={showChangePasswordConfirmation}
-        onClose={() => {handleClose();
-                        setShowChangePasswordConfirmation(false);
-                      setStatus(false);}}
+      <ChangePasswordConfirmation
+        open={showChangePasswordConfirmation}
+        onClose={() => {
+          handleClose();
+          setShowChangePasswordConfirmation(false);
+          setStatus(false);
+        }}
         success={status}
-        />
+      />
     </>
   );
 };

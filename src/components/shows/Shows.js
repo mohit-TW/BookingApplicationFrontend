@@ -13,7 +13,7 @@ import styles from "./styles/showsStyles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import useShows from "./hooks/useShows";
-import { HEADER_DATE_FORMAT, INR_SYMBOL } from "../../Constants";
+import { HEADER_DATE_FORMAT, INR_SYMBOL, QUERY_DATE_FORMAT } from "../../Constants";
 import {
   dateFromSearchString,
   nextDateLocation,
@@ -24,6 +24,7 @@ import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
 import PosterDialog from "./PosterDialog";
 import FormikButton from "../formik/FormikButton";
+import ScheduleMovieDialog from "./ScheduleMovieDialog";
 
 export default ({ location, history }) => {
   const classes = styles();
@@ -35,6 +36,7 @@ export default ({ location, history }) => {
     useShowsRevenue(showsDate);
   const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
   const [showPosterDialog, setShowPosterDialog] = useState(false);
+  const [showScheduleMovieDialog, setShowScheduleMovieDialog] = useState(false);
 
   const emptyShow = {
     id: "",
@@ -63,13 +65,19 @@ export default ({ location, history }) => {
       <div className={classes.cardHeader}>
         <Typography variant="h4" className={classes.showsHeader}>
           Shows ({showsDate.format(HEADER_DATE_FORMAT)})
+          {/* {console.log("IN: "+showsDate.format(QUERY_DATE_FORMAT))} */}
         </Typography>
         <div className={classes.adminUtils}>
-            <FormikButton variant="contained"
-                type="submit"
-                color="primary"
-                className={classes.scheduleMovieButton}
-                name="SCHEDULE MOVIE" />
+          <FormikButton
+            variant="contained"
+            type="submit"
+            color="primary"
+            className={classes.scheduleMovieButton}
+            name="SCHEDULE MOVIE"
+            onClick={() => {
+              setShowScheduleMovieDialog(true);
+            }}
+          />
           <ShowsRevenue
             showsRevenue={showsRevenue}
             showsRevenueLoading={showsRevenueLoading}
@@ -172,6 +180,11 @@ export default ({ location, history }) => {
       <Backdrop className={classes.backdrop} open={showsLoading}>
         <CircularProgress color="inherit" />
       </Backdrop>
+      <ScheduleMovieDialog
+        date={showsDate.format(QUERY_DATE_FORMAT)}
+        open={showScheduleMovieDialog}
+        onClose={()=>{setShowScheduleMovieDialog(false);this.render();}}
+      />
     </>
   );
 };

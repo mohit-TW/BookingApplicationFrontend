@@ -56,8 +56,8 @@ describe("Basic rendering", () => {
     const userProfileTypographyComponent = typographyComponents
       .at(0)
       .find("iconButton");
-    console.log("icon" + userProfileTypographyComponent.context);
-    console.log(userDivComponent.at(0).text().split(",")[0])
+    //console.log("icon" + userProfileTypographyComponent.context);
+    //console.log(userDivComponent.at(0).text().split(",")[0])
     expect(userDivComponent.at(0).text().split(",")[0]).toBe("Welcome");
   });
 

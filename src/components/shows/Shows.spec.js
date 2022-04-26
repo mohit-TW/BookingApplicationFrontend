@@ -8,6 +8,7 @@ import SeatSelectionDialog from "./SeatSelectionDialog";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import {shallow} from "enzyme";
 import ShowsRevenue from "./ShowsRevenue";
+import FormikButton from "../formik/FormikButton";
 
 jest.mock("./services/dateService", () => ({
     dateFromSearchString: jest.fn(),
@@ -119,4 +120,12 @@ describe("Basic rendering and functionality", () => {
         expect(showsRevenue.prop("showsRevenue")).toBe(549.99);
         expect(showsRevenue.prop("showsRevenueLoading")).toBe(false);
     });
+
+    it("Should display schedule movie when rendered", ()=>{
+        const shows = shallow(<Shows history={testHistory} location={testLocation}/>);
+
+        const scheduleButton = shows.find(FormikButton);
+
+        expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
+    })
 });

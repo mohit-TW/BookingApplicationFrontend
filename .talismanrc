@@ -18,3 +18,5 @@ fileignoreconfig:
   checksum: 6a2089dcfe983831cfd995389e822d70f7ab49947ae5789b6653e7cdaabc3d1c
 - filename: src/components/shows/PosterDialog.spec.js
   checksum: 304780193ba591d180c126f868bbae5576988e56993e47b65ded3e6cf79b789b
+- filename: src/components/shows/Shows.js
+  checksum: 9de3bb32a325e2cc1969dd2ab3e6cdd9b4c57bf89b3bce41d28de4d144bd861e

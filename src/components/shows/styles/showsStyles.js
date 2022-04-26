@@ -16,6 +16,17 @@ export default makeStyles((theme) =>
                 backgroundColor: "#bdbdbd",
             }
         },
+        adminUtils:{
+            display: "flex",
+            alignSelf: "center"
+        },
+        scheduleMovieButton:{
+            alignSelf: "center", 
+            padding: "0.3em 1em",
+            margin: "1em 1em 0 0",
+            fontSize: "1.3em",
+            fontWeight: "bold"
+        },
         showsHeader: {
             padding: "15px 0 0 15px",
             display: "flex",

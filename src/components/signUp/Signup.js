@@ -14,7 +14,7 @@ import FormikDateField from "../formik/FormikDateField";
 const Signup = ({ history }) => {
   const classes = styles();
   
- const {errorMessage, handleSignup, showError, phoneError} = useSignup();
+ const {errorMessage, handleSignup, showError, phoneError,dobError} = useSignup();
  const handleSubmit = (values) => {
      handleSignup(values,history);
  }
@@ -42,6 +42,7 @@ const Signup = ({ history }) => {
             label="Date of Birth"
             data-testid = "dob"
           />
+          {dobError? errorMessage() : ''}
           <FormikTextField required margin="dense" name="email" label="Email" data-testid = "email" />
           <FormikTextField
             required

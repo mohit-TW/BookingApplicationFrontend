@@ -8,6 +8,7 @@ export default () => {
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState('');
     const [phoneError, setPhoneError] = useState(false);
+    const [dobError, setdobError] = useState(false);
  
     const errorMessage = () => {
         if (error!=='') {
@@ -42,6 +43,9 @@ export default () => {
             if (err.response && err.response.status === 400) {
                 if(err.response.data.details[0]==="Phone Number already exists")
                     setPhoneError(true)
+                else if (err.response.data.details[0]==="Invalid Date Of Birth") {
+                    setdobError(true)
+                }
                 else 
                     setShowError(true);
                 setError(err.response.data.details[0]);
@@ -56,6 +60,6 @@ export default () => {
         handleSignup: handleSignup,
         showError: showError,
         phoneError: phoneError,
-
+        dobError: dobError
     };
 };

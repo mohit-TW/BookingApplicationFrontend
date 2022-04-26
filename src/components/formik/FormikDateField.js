@@ -32,7 +32,7 @@ const FormikDateField = (props) => {
             }
         }}
         InputLabelProps={Boolean(error) && {shrink: true}}
-        {...props}
+        {...props}  
         defaultValue={value!=="" ? moment(value).format('yyyy-MM-DD') : ""}
       />
     )

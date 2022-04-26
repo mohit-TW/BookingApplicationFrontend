@@ -1,3 +1,5 @@
+import moment from "moment";
+import { date } from "yup";
 import { object, string, ref } from "yup";
 import apiService from "../../../helpers/apiService";
 
@@ -12,14 +14,14 @@ export const initialValues = {
 };
 
 const strongRegex = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,64})"
 );
 export const formSchema = object({
     name: string("Enter name")
         .required("Name is required")
         .matches(/^[A-Za-z .]+$/, "Name can only have letters."),
     username: string("Enter username").required("Username is required"),
-    dob: string("Enter date of birth").required("Date of Birth is required"),
+    dob: date().max(new Date(), "You can't be born in the future!").required("DOB is required"),
     email: string("Enter email")
         .required("Email is required")
         .email("Email is invalid."),

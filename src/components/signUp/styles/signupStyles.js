@@ -15,5 +15,6 @@ export default makeStyles((theme) => ({
   },
   signupErrorMessage: {
     marginTop: "8px",
+    fontSize:"0.75rem"
   },
 }));

@@ -183,7 +183,7 @@ export default ({ location, history }) => {
       <ScheduleMovieDialog
         date={showsDate.format(QUERY_DATE_FORMAT)}
         open={showScheduleMovieDialog}
-        onClose={()=>{setShowScheduleMovieDialog(false);this.render();}}
+        onClose={()=>{setShowScheduleMovieDialog(false)}}
       />
     </>
   );

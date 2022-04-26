@@ -132,9 +132,8 @@ describe("Basic rendering and functionality", () => {
         const scheduleButton = shows.find(FormikButton);
 
         expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
-    })
-
-<<<<<<< HEAD
+    });
+    
     it("Should display poster when rendered", () => {
         const {getAllByTestId} = render(<Shows history={testHistory} location={testLocation}/>);
         const posterLink = "http://dummy.jpg";
@@ -144,7 +143,7 @@ describe("Basic rendering and functionality", () => {
             expect(element.getAttribute("src")).toBe(posterLink);
         });
     });
-=======
+
     it("should display the shedule movie dislog when schedule movie button is clicked", ()=>{
         const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
 
@@ -154,5 +153,4 @@ describe("Basic rendering and functionality", () => {
 
         expect(getByText("ScheduleMovie")).toBeTruthy();
     })
->>>>>>> 7cbc6e9 (Trello#38 | [Rhea/Thejaswini] | Add . Schedule Movie functionality.)
 });

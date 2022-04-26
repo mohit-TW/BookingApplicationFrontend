@@ -13,18 +13,18 @@ const PosterDialog = ({posterLink, name, open, onClose}) => {
 
     return (
         <>
-            <Dialog open={open} onClose={handleClose} >
+            <Dialog open={open} onClose={handleClose} data-testid="enlarged-poster">
             <div className={classes.posterContainer}>
                 <div className={classes.container}>
                     <Typography variant="h6" className={classes.posterHeader}>
-                        <div className={classes.posterTitle}>
+                        <div className={classes.posterTitle} data-testid="poster-title">
                             {name}
                         </div>
-                        <IconButton className={classes.posterExitButton} onClick={handleClose}>
+                        <IconButton className={classes.posterExitButton} onClick={handleClose} data-testid="close-button">
                             <CloseIcon />
                          </IconButton>
                     </Typography>
-                <img src = {posterLink} alt={name + " Poster"}/>
+                <img src = {posterLink} alt={name + " Poster"} data-testid="movie-poster"/>
                 </div>
             </div>
             </Dialog>

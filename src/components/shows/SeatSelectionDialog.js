@@ -30,13 +30,13 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                 <div className={classes.container}>
                     <Typography variant="h6" className={classes.dialogHeader}>
                         Select Seats
-                        <IconButton onClick={handleClose}>
+                        <IconButton data-testid="close-button" onClick={handleClose}>
                             <CloseIcon />
                          </IconButton>
                     </Typography>
                     <div className={classes.dialogContent}>
                         <div className={classes.moviePicture}>
-                            <img className={classes.moviePosterDialogbox} src ={selectedShow.movie.posterLink} alt={selectedShow.movie.name + " Poster"}
+                            <img data-testid = "poster-image" className={classes.moviePosterDialogbox} src ={selectedShow.movie.posterLink} alt={selectedShow.movie.name + " Poster"}
                                 onClick={()=>{
                                 setShowPosterDialog(true);
                                 setSelectedMoviePoster(selectedShow.movie.posterLink);

@@ -18,7 +18,7 @@ describe("Basic rendering and functionality", () => {
             name: "Movie 1",
             plot: "Suspense movie",
             duration: "1hr 30m",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_SX300.jpg"
+            posterLink: "http://dummy.jpg"
         },
         slot: {startTime: "start time 1"}
     };
@@ -57,4 +57,22 @@ describe("Basic rendering and functionality", () => {
 
         expect(getByText("Customer Details is open")).toBeTruthy();
     });
+
+    it("Should display poster of the selected show", () => {
+        const {getByTestId} =  render(<SeatSelectionDialog selectedShow={selectedShow} open={openDialog}
+                                                        onClose={onClose}
+                                                        updateShowsRevenue={updateShowRevenue}/>);
+
+        expect(getByTestId("poster-image").getAttribute("src")).toBe("http://dummy.jpg");
+    })
+
+    it("Should close the dialog when the cross button is clicked", () => {
+        const {getByTestId} =  render(<SeatSelectionDialog selectedShow={selectedShow} open={openDialog}
+            onClose={onClose}
+            updateShowsRevenue={updateShowRevenue}/>);
+        
+        fireEvent.click(getByTestId("close-button"))
+
+        expect(onClose).toHaveBeenCalledTimes(2);
+    })
 });

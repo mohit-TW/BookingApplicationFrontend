@@ -58,12 +58,12 @@ describe("Basic rendering and functionality", () => {
                 {
                     id: 1,
                     cost: 150,
-                    movie: {name: "Movie 1"},
+                    movie: {name: "Movie 1", posterLink: "http://dummy.jpg"},
                     slot: {startTime: "start time 1"}
                 }, {
                     id: 2,
                     cost: 160,
-                    movie: {name: "Movie 2"},
+                    movie: {name: "Movie 2", posterLink: "http://dummy.jpg"},
                     slot: {startTime: "start time 2"}
                 }
             ]
@@ -128,4 +128,14 @@ describe("Basic rendering and functionality", () => {
 
         expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
     })
+
+    it("Should display poster when rendered", () => {
+        const {getAllByTestId} = render(<Shows history={testHistory} location={testLocation}/>);
+        const posterLink = "http://dummy.jpg";
+
+        const moviePosters = getAllByTestId("poster");
+        moviePosters.forEach(element => {
+            expect(element.getAttribute("src")).toBe(posterLink);
+        });
+    });
 });

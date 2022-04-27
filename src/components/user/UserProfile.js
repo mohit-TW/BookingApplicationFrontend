@@ -5,15 +5,15 @@ import ChangePasswordDialog from "./ChangePasswordDialog";
 import { FormikButton } from "../formik";
 import useUser from "./hooks/useUser";
 
-export default () => {
+export default ({history,location, isAuthenticated}) => {
   const classes = styles();
-
   const user = useUser();
 
   const [showChangePasswordDialog, setShowChangePasswordDialog] =
     useState(false);
   return (
     <>
+      
       <div className={classes.userProfile}>
         <div className={classes.cardHeader}>
           <Typography variant="h4" className={classes.userHeader}>
@@ -21,7 +21,7 @@ export default () => {
           </Typography>
         </div>
         <div>
-          <Typography variant="h6" className={classes.lbl}>
+          <Typography variant="h6" className={classes.lbl} data-testid="username">
             Username: {user.username}
           </Typography>
           {user.name === null ? null : (
@@ -47,12 +47,17 @@ export default () => {
             }}
             className={classes.Btn}
             name="CHANGE PASSWORD"
+            data-testid="button-1"
+
           />
           <ChangePasswordDialog
             open={showChangePasswordDialog}
             onClose={() => {
               setShowChangePasswordDialog(false);
             }}
+            history={history}
+            location={location}
+            isAuthenticated = {isAuthenticated}
           />
         </div>
       </div>

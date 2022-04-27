@@ -1,33 +1,42 @@
-import { Dialog, IconButton } from "@material-ui/core";
+import { Dialog, IconButton, Snackbar } from "@material-ui/core";
 import React from "react";
 import styles from "./styles/changePasswordConfrimationStyles";
 import CloseIcon from "@material-ui/icons/Close";
+import useAuth from "../layout/hooks/useAuth";
+import Alert from "@material-ui/lab/Alert";
+const ChangePasswordConfirmation = ({ history, open, onClose, location, success }) => {
 
-const ChangePasswordConfirmation = ({ open, onClose, success }) => {
+  const { isAuthenticated, handleLogin, handleLogout } = useAuth();
+
   const handleClose = () => {
-    //onClose();
-    //history.goBack('/');
+    onClose();
+    handleLogout().then(() => {
+      window.location.assign('/login');
+    });
+    
   };
+  
 
   const classes = styles();
 
   const alertDisplay = () => {
     var alert;
-    if (success) {
+    if (success===1) {
       alert = (
-        <div className={classes.alertSuccess}>
-          Success! Login with new Password
-          <IconButton onClick={handleClose}>
-            <CloseIcon className={classes.closeButton} />
-          </IconButton>
-        </div>
+          
+          <Snackbar open={open}  onClose={handleClose} data-testid="alert">
+            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+              Success! Login with new password
+            </Alert>
+          </Snackbar>
       );
-    } else {
+    } else if(success==0){
       alert = (
-        <div className={classes.alertFailure}>
-          Sorry! Failed to change password
-          <CloseIcon className={classes.closeButton} onClick={handleClose} />
-        </div>
+        <Snackbar open={open}  onClose={handleClose} data-testid="alert">
+            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            Sorry! Failed to change password
+            </Alert>
+          </Snackbar>
       );
     }
     return alert;

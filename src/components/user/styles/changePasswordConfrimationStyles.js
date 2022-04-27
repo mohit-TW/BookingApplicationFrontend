@@ -3,8 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 export default makeStyles((theme) =>
     ({
         dialogBase:{
-        marginTop:"750px",
-        marginRight:"1400px"
+        marginRight:"400px"
         },
         closeButton:{
         color:"white",

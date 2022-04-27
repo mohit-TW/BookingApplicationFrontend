@@ -6,4 +6,5 @@ export default {
     //console.log("GET_USER:"+response.data);
     return response.data;
   },
+  
 };

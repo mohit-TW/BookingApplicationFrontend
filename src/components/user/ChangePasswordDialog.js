@@ -8,11 +8,13 @@ import CloseIcon from "@material-ui/icons/Close";
 import changePasswordService from "./services/changePasswordService";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ChangePasswordConfirmation from "./ChangePasswordConfirmation";
+import useAuth from "../layout/hooks/useAuth";
 
-const ChangePasswordDialog = ({ open, onClose }) => {
-  const [showChangePasswordConfirmation, setShowChangePasswordConfirmation] =
-    useState(false);
-  const [status, setStatus] = useState(false);
+
+const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticated}) => {
+ 
+  const [showChangePasswordConfirmation, setShowChangePasswordConfirmation] = useState(false);
+  const [status, setStatus] = useState(0);
 
   const handleClose = () => {
     setPasswordObjectList({
@@ -53,14 +55,19 @@ const ChangePasswordDialog = ({ open, onClose }) => {
   const [errorMsgObj, setErrorMsgObj] = useState({
     patternMismatch: null,
     passwordMismatch: null,
-    newPasswordIsSameAsOldPassword: null,
+    newPasswordIsSameAsOldPassword: null
   });
+
+  const [oldPasswordErrorMsg, setOldPasswordErrorMsg] = useState("");
+  const [errorShown, setErrorShown] = useState(false);
 
   const initialValues = {
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
   };
+
+
 
   const handleSubmit = async () => {
     const payload = {
@@ -70,20 +77,23 @@ const ChangePasswordDialog = ({ open, onClose }) => {
     };
 
     let response;
-    try {
-      response = await changePasswordService.create(payload);
-      //alert(" Password changed successfully !! ");
-      //console.log("RESP: "+response.data.json());
-      //console.log(response.status);
-      setShowChangePasswordConfirmation(true);
-      setStatus(true);
-    } catch (err) {
-      alert(" Old Password is wrong !! ");
-      setStatus(false);
-    } finally {
-      console.log(response);
-      onClose();
+
+
+    response = changePasswordService.create(payload).then((data) => {
+        setShowChangePasswordConfirmation(true);
+        setStatus(1);
+        setErrorShown(false);
+        setOldPasswordErrorMsg("");
+        console.log(data);
+        onClose();
+    },
+    (error) => {
+        setErrorShown(true);
+        setOldPasswordErrorMsg(error.response.data.message);
+
+
     }
+    );
   };
 
   const handlePatterMismatch = (e) => {
@@ -157,6 +167,7 @@ const ChangePasswordDialog = ({ open, onClose }) => {
                   })
                 }
               />
+
               <IconButton
                 className={classes.eye}
                 onClick={() => {
@@ -170,12 +181,16 @@ const ChangePasswordDialog = ({ open, onClose }) => {
                 }}
               >
                 {passwordObjectList.oldPasswordObject.shown ? (
-                  <VisibilityOff />
-                ) : (
                   <Visibility />
+                ) : (
+                  <VisibilityOff />
                 )}
               </IconButton>
-
+                <Typography variant="body1" color="error">
+                              {
+                                oldPasswordErrorMsg
+                              }
+                              </Typography>
               <FormikTextField
                 required
                 type={
@@ -193,7 +208,6 @@ const ChangePasswordDialog = ({ open, onClose }) => {
                 }
                 value={passwordObjectList.newPasswordObject.value}
                 onChange={(e) => {
-                  //setErrorMsgPatternMismatch(handleValidation(e));
                   setPasswordObjectList({
                     ...passwordObjectList,
                     newPasswordObject: {
@@ -222,9 +236,9 @@ const ChangePasswordDialog = ({ open, onClose }) => {
                 }}
               >
                 {passwordObjectList.newPasswordObject.shown ? (
-                  <VisibilityOff />
-                ) : (
                   <Visibility />
+                ) : (
+                  <VisibilityOff />
                 )}
               </IconButton>
 
@@ -279,9 +293,9 @@ const ChangePasswordDialog = ({ open, onClose }) => {
                 }}
               >
                 {passwordObjectList.confirmNewPasswordObject.shown ? (
-                  <VisibilityOff />
-                ) : (
                   <Visibility />
+                ) : (
+                  <VisibilityOff />
                 )}
               </IconButton>
               <Typography variant="body1" color="error">
@@ -299,13 +313,13 @@ const ChangePasswordDialog = ({ open, onClose }) => {
           </Formik>
         </div>
       </Dialog>
-      <ChangePasswordConfirmation
-        open={showChangePasswordConfirmation}
+      <ChangePasswordConfirmation history={history} isAuthenticated ={isAuthenticated} 
+      open={showChangePasswordConfirmation}
         onClose={() => {
-          handleClose();
-          setShowChangePasswordConfirmation(false);
-          setStatus(false);
-        }}
+                      setShowChangePasswordConfirmation(false);
+                      setStatus(2);
+                      handleClose();}}
+        location={location}
         success={status}
       />
     </>
@@ -317,3 +331,7 @@ ChangePasswordDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 export default ChangePasswordDialog;
+
+
+
+

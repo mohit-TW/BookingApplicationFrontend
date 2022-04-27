@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MovieIcon from "@material-ui/icons/Movie";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -10,8 +10,6 @@ import useUser from "../user/hooks/useUser";
 
 const Header = ({ onLogout, isAuthenticated}) => {
   const classes = styles();
-
-  const user = useUser();
 
   const logoutSection = () => {
     return (
@@ -27,7 +25,6 @@ const Header = ({ onLogout, isAuthenticated}) => {
   const userProfileSection = () => {
     return (
       <div className={classes.personProfileIcon}>
-        <b>Welcome, {user.username}</b>
         <Link to="/userProfile">
           <IconButton className={classes.profileIcon}>
             <PersonIcon />

@@ -23,12 +23,8 @@ const RootRouter = ({ isAuthenticated, onLogin, handleLogout }) => {
         component={Shows}
         isAuthenticated={isAuthenticated}
       />
-      <ProtectedRoute
-        exact
-        path="/userProfile"
-        component={UserProfile}
-        isAuthenticated={isAuthenticated}
-      />
+      <ProtectedRoute exact path="/userProfile" isAuthenticated={isAuthenticated}
+                       component={(props) => <UserProfile {...props}/>}/>
       <Route
         exact
         path="/login"
@@ -45,6 +41,7 @@ const RootRouter = ({ isAuthenticated, onLogin, handleLogout }) => {
                 
                 <Route exact path="/signup"
                        component={(props) => <Signup {...props}/>}/>
+               
       {/* <Route exact path="/userProfile"
                        component={() => <UserProfile /> } /> */}
       <Route

@@ -6,7 +6,8 @@ export default () => {
 
     useEffect(() => {
         setIsAuthenticated(isLoggedIn());
-    }, []);
+    }, [isAuthenticated]);
+
 
     const handleLogin = async (username, password) => {
         const userDetails = await login(username, password);
@@ -14,9 +15,9 @@ export default () => {
         return userDetails;
     };
 
-    const handleLogout = () => {
-        logout();
+    const handleLogout = async () => {
         setIsAuthenticated(false);
+        logout();
     };
 
     return {

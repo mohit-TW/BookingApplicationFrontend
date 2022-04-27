@@ -27,7 +27,6 @@ describe("Basic logic", () => {
         const {result} = renderHook(() => useUser());
 
         const userDetails = result.current;
-        //console.log(userDetails);
 
         expect(userDetails).toEqual({
             username: "",
@@ -36,7 +35,6 @@ describe("Basic logic", () => {
             mobileNo: null,
             email: null
           });
-        //expect(showsLoading).toBe(true);
     })
 
     it("Should get user details after mount", async()=>{

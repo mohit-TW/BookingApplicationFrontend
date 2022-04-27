@@ -13,12 +13,8 @@ fileignoreconfig:
 - filename: src/components/signUp/services/signupFormService.js
   checksum: a51d7f22bd5f0f27be36533061ff0f1ee4195d55da4ad348f0161bbfd12aecef
 - filename: src/components/user/ChangePasswordConfirmation.js
-  checksum: 5317a5161b32406ed9c683b7d728b189e803b6d05ea0fd835a717727b7e81932
+  checksum: 0e8f9ce5deb11526ce1636bf21bbc6207229991656227b56de21ab402b0c7d67
+- filename: src/components/user/UserProfile.spec.js
+  checksum: 01c8d6acca2c2e39b22d8eb538e6fd58dd047fca4181ba5001447dfe7a0667a7
 - filename: src/components/user/ChangePasswordDialog.js
-  checksum: 6a2089dcfe983831cfd995389e822d70f7ab49947ae5789b6653e7cdaabc3d1c
-- filename: src/components/shows/PosterDialog.spec.js
-  checksum: 45e475c84f37a6d5e09a6eba723dee7e2684495af0ae2e27b242f53a83e63daf
-- filename: src/components/shows/Shows.js
-  checksum: 9de3bb32a325e2cc1969dd2ab3e6cdd9b4c57bf89b3bce41d28de4d144bd861e
-- filename: src/components/shows/services/scheduleMovieForm.js
-  checksum: 30c1666c627c62af3015686dd7f8a570eb2023d688c8741759cebf80544afe2d
+  checksum: 85f74370e6c6413a15ad98819234e53af787355205eac40576656deb547d4213

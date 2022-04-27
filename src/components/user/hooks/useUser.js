@@ -12,7 +12,6 @@ const useUser = () => {
 
   useEffect(() => {
     userService.getLoggenInUserDetails().then((user) => {
-      console.log("user: " + user.username);
     
       setUserDetails({...userDetails,username: user.username});
     });

@@ -12,18 +12,17 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
   },
   loginButton: {
-    marginTop: "15px",
-    marginRight: "300px",
-    marginBottom: "20px",
+    margin: "5% auto 5% auto"
   },
   container: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    marginLeft: "9%"
   },
   dialogHeader: {
     fontWeight: "bold",
-    margin: "0% 5% 0% 5%",
+    margin: "auto",
     paddingTop: "5%",
   },
   dialogContent: {

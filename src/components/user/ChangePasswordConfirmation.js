@@ -24,7 +24,8 @@ const ChangePasswordConfirmation = ({ history, open, onClose, location, success 
     if (success===1) {
       alert = (
           
-          <Snackbar open={open}  onClose={handleClose} data-testid="alert">
+          <Snackbar open={open}  onClose={handleClose} data-testid="alert" anchorOrigin={{ vertical: 'top',
+          horizontal: 'center' }}>
             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
               Success! Login with new password
             </Alert>
@@ -32,7 +33,8 @@ const ChangePasswordConfirmation = ({ history, open, onClose, location, success 
       );
     } else if(success==0){
       alert = (
-        <Snackbar open={open}  onClose={handleClose} data-testid="alert">
+        <Snackbar open={open}  onClose={handleClose} data-testid="alert" anchorOrigin={{ vertical: 'top',
+        horizontal: 'center', }}>
             <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
             Sorry! Failed to change password
             </Alert>

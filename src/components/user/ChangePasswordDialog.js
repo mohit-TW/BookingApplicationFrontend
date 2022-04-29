@@ -139,8 +139,8 @@ const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticate
         <div className={classes.container}>
           <Typography variant="h6" className={classes.dialogHeader}>
             Change Password
-            <CloseIcon className={classes.closeButton} onClick={handleClose} />
           </Typography>
+          <CloseIcon className={classes.closeButton} onClick={handleClose} />
         </div>
 
         <div className={classes.dialogContent}>

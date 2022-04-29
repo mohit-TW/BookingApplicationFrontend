@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
     overflow: "hidden",
     minHeight: "30vh",
     maxHeight: "80vh",
+    maxWidth: "542px",
   },
   loginForm: {
     display: "flex",
@@ -17,11 +18,13 @@ export default makeStyles((theme) => ({
   },
   container: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   dialogHeader: {
     fontWeight: "bold",
-    padding: "10px 0px 0px 10px",
+    margin: "0% 5% 0% 5%",
+    paddingTop: "5%",
   },
   dialogContent: {
     display: "flex",
@@ -31,8 +34,8 @@ export default makeStyles((theme) => ({
   },
   closeButton: {
     flexDirection: "row",
-    marginLeft: "350px",
-    marginTop: "8px",
+    marginTop: "5%",
+    marginRight: "5%",
   },
   eye: {
     marginLeft: "440px",

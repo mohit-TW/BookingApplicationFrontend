@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import { FormikTextField } from "../formik";
 import { Button } from "@material-ui/core";
@@ -10,13 +10,18 @@ import {
 import useSignup from "./hooks/useSignup";
 import FormikPasswordField from "../formik/FormikPasswordField";
 import FormikDateField from "../formik/FormikDateField";
+import SignupConfirmation from "./SignupConfirmation";
 
 const Signup = ({ history }) => {
   const classes = styles();
   
- const {errorMessage, handleSignup, showError, phoneError,dobError} = useSignup();
+ const {errorMessage, handleSignup, success, showError, phoneError,dobError} = useSignup();
+ const [showSignupConfirmation, setShowSignupConfirmation] = useState(false);
+
  const handleSubmit = (values) => {
-     handleSignup(values,history);
+      handleSignup(values,history);
+      setShowSignupConfirmation(success);
+
  }
   return (
     <div className={classes.signupContainer}>
@@ -75,8 +80,12 @@ const Signup = ({ history }) => {
           >
             Sign Up
           </Button>
+          <SignupConfirmation history={history} open={success} onClose={() => {
+              setShowSignupConfirmation(false);
+            }} />
         </Form>
       </Formik>
+      
     </div>
   );
 }

@@ -9,6 +9,7 @@ export default () => {
     const [error, setError] = useState('');
     const [phoneError, setPhoneError] = useState(false);
     const [dobError, setdobError] = useState(false);
+    const [success, setSuccess] = useState(false);
  
     const errorMessage = () => {
         if (error!=='') {
@@ -27,6 +28,7 @@ export default () => {
     const handleSignup = async (values, history) => {
         setPhoneError(false);
         setShowError(false);
+        setSuccess(false);
         const payload = {
                   name: values.name,
                   username: values.username,
@@ -38,7 +40,7 @@ export default () => {
         };
         try {
             const response = await signupFormService.create(payload);
-            history.goBack('/login');
+            setSuccess(true);
         } catch (err) {
             if (err.response && err.response.status === 400) {
                 if(err.response.data.details[0]==="Phone Number already exists")
@@ -58,6 +60,7 @@ export default () => {
     return {
         errorMessage: errorMessage,
         handleSignup: handleSignup,
+        success: success,
         showError: showError,
         phoneError: phoneError,
         dobError: dobError

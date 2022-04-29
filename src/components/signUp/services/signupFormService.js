@@ -19,7 +19,7 @@ const strongRegex = new RegExp(
 export const formSchema = object({
     name: string("Enter name")
         .required("Name is required")
-        .matches(/^[A-Za-z .]+$/, "Name can only have letters."),
+        .matches(/^[A-Za-z][A-Za-z .]+$/, "Name can only have letters."),
     username: string("Enter username").required("Username is required"),
     dob: date().max(new Date(), "You can't be born in the future!").required("DOB is required"),
     email: string("Enter email")

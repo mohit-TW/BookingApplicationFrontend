@@ -13,13 +13,15 @@ export const initialValues = {
     confirmPassword: "",
 };
 
-const strongRegex = new RegExp(
+const PASSWORD_PATTERN = new RegExp(
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,64})"
 );
+const NAME_PATTERN = new RegExp("^(?![\\s.]+$)[a-zA-Z\\s.]*$");
+
 export const formSchema = object({
     name: string("Enter name")
         .required("Name is required")
-        .matches(/^[A-Za-z][A-Za-z .]+$/, "Name can only have letters."),
+        .matches(NAME_PATTERN, "Name can only have letters, space and ."),
     username: string("Enter username").required("Username is required"),
     dob: date().max(new Date(), "You can't be born in the future!").required("DOB is required"),
     email: string("Enter email")
@@ -30,7 +32,7 @@ export const formSchema = object({
         .matches(/^[1-9][0-9]{9}$/, "Mobile number is invalid"),
     password: string("Enter password")
         .required("Password is required")
-        .matches(strongRegex, "Password is invalid"),
+        .matches(PASSWORD_PATTERN, "Password is invalid"),
     confirmPassword: string("Enter confirm password")
         .required("Confirm password is required")
         .oneOf([ref("password"), null], "Confirm Password doesn't match password"),

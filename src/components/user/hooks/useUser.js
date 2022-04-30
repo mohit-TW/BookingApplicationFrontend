@@ -16,27 +16,22 @@ const useUser = () => {
 
   useEffect(() => {
     userService.getLoggenInUserDetails().then((user) => {
-      console.log(user);
       setUserDetails({...userDetails,username: user.username});
     });
     // eslint-disable-next-line
   }, []);
 
   const getLoggedInUser = () => {
-    console.log("LOGGEd In")
     const user = userService.getLoggenInUserDetails();
     if(!user.username){
       setUserDetails({...userDetails, username: user.username});
-      console.log(userDetails)
     }
     return userDetails;
   }
 
   const getDetails = async(name) => {
-    console.log(name);
     try{
       const response = await userDetailsService.fetch(name);
-      console.log("useUser ",response);
       setUserDetails({...userDetails, username: response.data.username, name: response.data.name, dob:response.data.dob, email: response.data.email, mobileNo: response.data.phoneNumber});
     }
     catch(err){

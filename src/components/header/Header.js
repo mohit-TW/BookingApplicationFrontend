@@ -10,23 +10,16 @@ import useUser from "../user/hooks/useUser";
 import userService from "../user/services/userService";
 
 
-const Header = ({ onLogout, isAuthenticated}) => {
+const Header = ({ onLogout, isAuthenticated, username}) => {
   const classes = styles();
-  // const {user} = useUser();
-  // const [username, setUsername] = useState('');
-  // if(user.username){
-  //   setUsername(user.username);
-  // }
 
-  console.log(isAuthenticated);
-  const [username, setUsername] = useState('');
+  const [userName, setUsername] = useState(username);
 
-  if(username!='')
-  console.log(username);
-  if(username==='' && isAuthenticated){
-    console.log("In if")
-    const user = userService.getLoggenInUserDetails().then((response) => setUsername(response.username));
-  }
+  useEffect(()=> {
+    if(username ==='' && isAuthenticated){
+      const user = userService.getLoggenInUserDetails().then((response) => setUsername(response.username));
+    }
+  })
 
   const logoutSection = () => {
     return (
@@ -42,7 +35,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
   const userProfileSection = () => {
     return (
       <div className={classes.personProfileIcon}>
-        <p>Welcome {username}</p>
+        <p>Welcome, {userName}</p>
         <Link to="/userProfile">
           <IconButton className={classes.profileIcon}>
             <PersonIcon />

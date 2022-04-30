@@ -7,18 +7,6 @@ import UserProfile from "./UserProfile";
 import '@testing-library/jest-dom/extend-expect';
 
 
-jest.mock('./hooks/useUser', () => {
-    return jest.fn(() => ({
-       user: {username: "admin-user",
-                                password: "",
-                                name: null,
-                                mobileNo: null,
-                                email: null,
-    }}))
-})
-
-
-
 jest.mock("./ChangePasswordDialog", () => {
     return ({open}) => <div>Change Password is {open ? "open" : "closed"}</div>
 });
@@ -27,8 +15,8 @@ describe("Basic rendering and functionality", () => {
     const openDialog = true;
     const onClose = jest.fn();
     const user = {username: "admin-user",
-                  password: "",
                   name: null,
+                  dob: null,
                   mobileNo: null,
                   email: null,}
 

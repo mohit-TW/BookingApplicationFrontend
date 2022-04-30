@@ -22,12 +22,14 @@ const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, open, o
         phoneNumber: ""
     };
 
+    const NAME_PATTERN = new RegExp("^(?![\\s.]+$)[a-zA-Z\\s.]*$");
+
     const formSchema = object({
         name: string("Enter name")
-            .required("Name is required").matches(/^[A-Za-z .]+$/, "Name can only have letters."),
+            .required("Name is required").matches(NAME_PATTERN, "Name can only have letters, space and ."),
         phoneNumber: string("Enter phone number")
             .required("Phone number is required")
-            .matches(/^\d{10}$/, "Phone number should be 10 digits")
+            .matches(/^[1-9][0-9]{9}$/, "Phone number should be 10 digits")
     });
 
     const bookShow = async (values) => {

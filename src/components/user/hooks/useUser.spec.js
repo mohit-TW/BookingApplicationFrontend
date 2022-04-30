@@ -1,5 +1,4 @@
 import {renderHook} from "@testing-library/react-hooks";
-import moment from "moment";
 import {when} from "jest-when";
 import useUser from "./useUser";
 import userService from "../services/userService";
@@ -16,8 +15,8 @@ describe("Basic logic", () => {
     beforeEach(() => {
         when(userService.getLoggenInUserDetails).calledWith().mockResolvedValue({
             username: "admin-user",
-            password: "",
             name: null,
+            dob: null,
             mobileNo: null,
             email: null,
           });
@@ -26,12 +25,12 @@ describe("Basic logic", () => {
     it("Should initialise hook with empty user details", () => {
         const {result} = renderHook(() => useUser());
 
-        const userDetails = result.current;
+        const userDetail = result.current.user;
 
-        expect(userDetails).toEqual({
+        expect(userDetail).toEqual({
             username: "",
-            password: "",
             name: null,
+            dob: null,
             mobileNo: null,
             email: null
           });
@@ -42,14 +41,12 @@ describe("Basic logic", () => {
 
         await getMockUserDetails;
 
-        const userDetails = result.current;
-        //console.log(userDetails);
+        const userDetail = result.current.user;
 
-
-        expect(userDetails).toEqual({
+        expect(userDetail).toEqual({
             username: "admin-user",
-            password: "",
             name: null,
+            dob: null,
             mobileNo: null,
             email: null
           });

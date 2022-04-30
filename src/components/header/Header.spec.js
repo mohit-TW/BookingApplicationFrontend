@@ -56,19 +56,7 @@ describe("Basic rendering", () => {
     const userProfileTypographyComponent = typographyComponents
       .at(0)
       .find("iconButton");
-    console.log("icon" + userProfileTypographyComponent.context);
   });
 
 });
 
-// describe("Functional Rendering", () => {
-//   jest.mock(onLogout);
-
-//   it("should be able to redirect to user profile when profile icon is clicked", () => {
-//     const { getByTestId } = render(
-//       <Header isAuthenticated={true} onLogout={testOnLogout} />
-//     );
-
-//     expect(get)
-//   });
-// });

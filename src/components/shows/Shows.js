@@ -65,7 +65,6 @@ export default ({ location, history }) => {
       <div className={classes.cardHeader}>
         <Typography variant="h4" className={classes.showsHeader}>
           Shows ({showsDate.format(HEADER_DATE_FORMAT)})
-          {/* {console.log("IN: "+showsDate.format(QUERY_DATE_FORMAT))} */}
         </Typography>
         <div className={classes.adminUtils}>
           <FormikButton

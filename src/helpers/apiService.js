@@ -21,17 +21,12 @@ export default {
   },
 
   get: async (path) => {
-    console.log("Api Service");
-    console.log(authHeader());
-    console.log(path);
     return promiseWithErrorHandling(
       axios.get(`${urls.service}/${path}`, authHeader())
     );
   },
 
   getWithParameter: async (path, parameter) => {
-    console.log("Api Service");
-    console.log(authHeader());
     return promiseWithErrorHandling(
       axios.get(`${urls.service}/${path}`, parameter, authHeader())
     );

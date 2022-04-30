@@ -64,14 +64,10 @@ const ScheduleMovieDialog = ({ history,date, open, onClose }) => {
         }
     })
 
-    //let response;
     try {
         payloads.map(async(payload,k) => {
-            console.log("Pay: "+JSON.stringify(payload));
             const response = await showsService.create(payload);
-            console.log("Response"+response);
             window.location.reload(false);
-            //history.push('/show');
             return ;
         });
     } catch (err) {

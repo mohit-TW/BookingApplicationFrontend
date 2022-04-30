@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import RootRouter from "../router/RootRouter";
 import useAuth from "./hooks/useAuth";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -8,12 +8,13 @@ import styles from "../layout/styles/layoutStyles";
 
 export default () => {
   const { isAuthenticated, handleLogin, handleLogout } = useAuth();
+  const [username, setUsername] = useState('');
   const classes = styles();
 
   return (
     <Router>
       <Box>
-        <Header onLogout={handleLogout} isAuthenticated={isAuthenticated} />
+        <Header onLogout={handleLogout} isAuthenticated={isAuthenticated} username = {username}/>
         <Container maxWidth={false} className={classes.container}>
           <Card>
             <RootRouter

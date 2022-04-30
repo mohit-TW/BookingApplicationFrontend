@@ -38,12 +38,5 @@ describe("Basic rendering and functionality", () => {
 
             expect(getByText("Change Password is open")).toBeTruthy();
     });
-    it("Should exist username", () => {
-
-            const {getByTestId} = render(<UserProfile />);
-
-            expect(getByTestId('username')).toBeDefined();
-    });
-
 
 });

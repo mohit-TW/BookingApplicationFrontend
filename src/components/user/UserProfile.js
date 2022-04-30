@@ -9,7 +9,7 @@ export default ({history,location, isAuthenticated}) => {
   const classes = styles();
   const {user,getDetails, error} = useUser();
   if(user.username && !user.name && !error){
-    getDetails(user.username)
+    getDetails(user.username).then()
   }
 
   const [showChangePasswordDialog, setShowChangePasswordDialog] =

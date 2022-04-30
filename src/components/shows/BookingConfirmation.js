@@ -1,13 +1,14 @@
 import React from 'react'
 import {Dialog, DialogContent, Typography} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert/Alert";
-import styles from "./styles/customerDetailsDialogStyles"
+import styles from "./styles/customerDetailsDialogStyles";
+import CloseIcon from "@material-ui/icons/Close";
 
-const BookingConfirmation = ({bookingConfirmation, showConfirmation}) => {
+const BookingConfirmation = ({bookingConfirmation, showConfirmation, onClose}) => {
     const classes = styles();
     return (
-      <Dialog open={showConfirmation}>
-            <Alert severity="success">
+      <Dialog open={showConfirmation} onClose={onClose}>
+            <Alert onClose={onClose} severity="success">
                 Seats booked successfully!
             </Alert>
             <Typography variant="h6" className={classes.dialogHeader}>

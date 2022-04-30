@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/userProfileStyles";
 import { Typography } from "@material-ui/core";
 import ChangePasswordDialog from "./ChangePasswordDialog";
@@ -7,7 +7,12 @@ import useUser from "./hooks/useUser";
 
 export default ({history,location, isAuthenticated}) => {
   const classes = styles();
-  const user = useUser();
+  const {user,getDetails, error} = useUser();
+  if(user.username && !user.name && !error){
+    getDetails(user.username).then(
+      console.log(user)
+    )
+  }
 
   const [showChangePasswordDialog, setShowChangePasswordDialog] =
     useState(false);
@@ -26,17 +31,22 @@ export default ({history,location, isAuthenticated}) => {
           </Typography>
           {user.name === null ? null : (
             <Typography variant="h6" className={classes.lbl}>
-              Name:
+              Name: {user.name}
+            </Typography>
+          )}
+          {user.dob === null ? null : (
+            <Typography variant="h6" className={classes.lbl}>
+              Date of Birth: {user.dob}
             </Typography>
           )}
           {user.email === null ? null : (
             <Typography variant="h6" className={classes.lbl}>
-              Email:
+              Email: {user.email}
             </Typography>
           )}
           {user.mobileNo === null ? null : (
             <Typography variant="h6" className={classes.lbl}>
-              Mobile Number:
+              Mobile Number: {user.mobileNo}
             </Typography>
           )}
           <FormikButton

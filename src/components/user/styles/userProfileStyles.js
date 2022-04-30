@@ -16,13 +16,14 @@ export default makeStyles((theme) => ({
     alignSelf: "center",
   },
   Btn: {
-    marginBottom: "1em",
-    marginTop: "1em",
+    marginBottom: "25px",
+    marginTop: "25px",
+    marginLeft: "15px"
   },
   lbl: {
     color: "black",
     fontWeight: "540",
     padding: "0 0 0 18px",
-    fontSize: "1.5em",
+    fontSize: "1.2em",
   },
 }));

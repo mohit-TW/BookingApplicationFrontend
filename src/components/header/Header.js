@@ -7,9 +7,26 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import useUser from "../user/hooks/useUser";
+import userService from "../user/services/userService";
+
 
 const Header = ({ onLogout, isAuthenticated}) => {
   const classes = styles();
+  // const {user} = useUser();
+  // const [username, setUsername] = useState('');
+  // if(user.username){
+  //   setUsername(user.username);
+  // }
+
+  console.log(isAuthenticated);
+  const [username, setUsername] = useState('');
+
+  if(username!='')
+  console.log(username);
+  if(username==='' && isAuthenticated){
+    console.log("In if")
+    const user = userService.getLoggenInUserDetails().then((response) => setUsername(response.username));
+  }
 
   const logoutSection = () => {
     return (
@@ -25,6 +42,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
   const userProfileSection = () => {
     return (
       <div className={classes.personProfileIcon}>
+        <p>Welcome {username}</p>
         <Link to="/userProfile">
           <IconButton className={classes.profileIcon}>
             <PersonIcon />

@@ -1,13 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
+  err:{
+    fontSize: "13px",
+    color: "red"
+  },
   lbl:{
     fontSize: "1.3em",
     padding: "0.7em 0em 0em 0em"
   },
   container: {
     display: "flex",
-    //flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     padding: "0em 1.8em 0em 0em"

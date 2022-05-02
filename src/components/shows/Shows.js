@@ -24,7 +24,7 @@ import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
 import PosterDialog from "./PosterDialog";
 import FormikButton from "../formik/FormikButton";
-import ScheduleMovieDialog from "./ScheduleMovieDialog";
+import ScheduleMovieDialog from "./ScheduleMovies/ScheduleMovieDialog";
 
 export default ({ location, history }) => {
   const classes = styles();
@@ -37,6 +37,7 @@ export default ({ location, history }) => {
   const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
   const [showPosterDialog, setShowPosterDialog] = useState(false);
   const [showScheduleMovieDialog, setShowScheduleMovieDialog] = useState(false);
+  const [btnDisable, setBtnDisable] = useState(false);
 
   const emptyShow = {
     id: "",
@@ -71,6 +72,7 @@ export default ({ location, history }) => {
             variant="contained"
             type="submit"
             color="primary"
+            disabled={btnDisable}
             className={classes.scheduleMovieButton}
             name="SCHEDULE MOVIE"
             onClick={() => {
@@ -183,6 +185,7 @@ export default ({ location, history }) => {
         date={showsDate.format(QUERY_DATE_FORMAT)}
         open={showScheduleMovieDialog}
         onClose={()=>{setShowScheduleMovieDialog(false)}}
+        setBtnDisable={setBtnDisable}
       />
     </>
   );

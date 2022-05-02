@@ -17,7 +17,7 @@ describe("Basic Rendering", () => {
                                                             options={[
                                                                 {value: "valueOne", display: "Value One"},
                                                                 {value: "valueTwo", display: "Value Two"}
-                                                            ]}/>);
+                                                            ]} dropdownLabel="Status"/>);
 
         const inputLabelComponent = formikSelectComponent.find(InputLabel);
         const selectComponent = formikSelectComponent.find(Select);

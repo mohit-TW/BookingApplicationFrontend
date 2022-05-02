@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
 import slotsService from "../services/slotsService";
 
-const useSlots = (date) => {
+const useSlots = (date, fn) => {
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
     slotsService.fetchSlots(date).then((slot) => {
         const availSlots =
       slot.slots.map((obj) => {
-            return {
+            const temp = {
                 id: obj.id,
-                startTime: obj.startTime,
-                endTime: obj.endTime,
+                label: obj.startTime+" - "+obj.endTime,
                 name: obj.name,
             }
+            return temp;
       });
-      setSlots(availSlots);
+      //console.log("avail: "+ availSlots.length);
+      if(availSlots.length !== 0) setSlots(availSlots);
+      else fn(true);
     });
     // eslint-disable-next-line
-  }, [slots]);
+  }, []);
 
-  return slots;
+  return {
+    slots:slots,
+  };
 };
 
 export default useSlots;

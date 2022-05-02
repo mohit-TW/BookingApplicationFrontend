@@ -9,7 +9,7 @@ import useShowsRevenue from "./hooks/useShowsRevenue";
 import {shallow} from "enzyme";
 import ShowsRevenue from "./ShowsRevenue";
 import FormikButton from "../formik/FormikButton";
-import ScheduleMovieDialog from "./ScheduleMovieDialog";
+import ScheduleMovieDialog from "./ScheduleMovies/ScheduleMovieDialog";
 
 jest.mock("./services/dateService", () => ({
     dateFromSearchString: jest.fn(),
@@ -31,7 +31,7 @@ jest.mock("./SeatSelectionDialog", () => {
     return () => <div>SeatSelection</div>;
 });
 
-jest.mock("./ScheduleMovieDialog", ()=> {
+jest.mock("./ScheduleMovies/ScheduleMovieDialog", ()=> {
     return() => <div>ScheduleMovie</div>
 })
 
@@ -125,14 +125,6 @@ describe("Basic rendering and functionality", () => {
         expect(showsRevenue.prop("showsRevenue")).toBe(549.99);
         expect(showsRevenue.prop("showsRevenueLoading")).toBe(false);
     });
-
-    it("Should display schedule movie when rendered", ()=>{
-        const shows = shallow(<Shows history={testHistory} location={testLocation}/>);
-
-        const scheduleButton = shows.find(FormikButton);
-
-        expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
-    });
     
     it("Should display poster when rendered", () => {
         const {getAllByTestId} = render(<Shows history={testHistory} location={testLocation}/>);
@@ -144,6 +136,14 @@ describe("Basic rendering and functionality", () => {
         });
     });
 
+    it("Should display schedule movie when rendered", ()=>{
+        const shows = shallow(<Shows history={testHistory} location={testLocation}/>);
+
+        const scheduleButton = shows.find(FormikButton);
+
+        expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
+    });
+
     it("should display the shedule movie dislog when schedule movie button is clicked", ()=>{
         const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
 
@@ -152,5 +152,5 @@ describe("Basic rendering and functionality", () => {
         fireEvent.click(getByText("SCHEDULE MOVIE"));
 
         expect(getByText("ScheduleMovie")).toBeTruthy();
-    })
+    });
 });

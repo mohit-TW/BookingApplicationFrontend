@@ -1,80 +1,83 @@
-import React, {useEffect} from "react";
-import {Form, Formik} from "formik";
-import {FormikTextField} from "../formik";
-import {Button} from "@material-ui/core";
-import styles from "./styles/loginStyles"
+import React, { useEffect } from "react";
+import { Form, Formik } from "formik";
+import { FormikTextField } from "../formik";
+import { Button } from "@material-ui/core";
+import styles from "./styles/loginStyles";
 import PropTypes from "prop-types";
 import useLogin from "./hooks/useLogin";
-import {formSchema, initialValues} from "./services/loginFormService";
+import { formSchema, initialValues } from "./services/loginFormService";
 
-const Login = ({location, history, isAuthenticated, onLogin}) => {
-    const classes = styles();
-    const {from} = location.state || {from: {pathname: "/"}};
-    const {errorMessage, handleLogin} = useLogin(onLogin);
+const Login = ({ location, history, isAuthenticated, onLogin }) => {
+  const classes = styles();
+  const { from } = location.state || { from: { pathname: "/" } };
+  const { errorMessage, handleLogin } = useLogin(onLogin);
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            history.replace(from);
-        }
-    });
-
-    const handleClick = (history) => {
-        history.push('/signup');
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.replace(from);
     }
+  });
 
-    return (
-        <div className={classes.loginContainer}>
-            <Formik initialValues={initialValues}
-                    onSubmit={handleLogin}
-                    validationSchema={formSchema}>
-                {
-                    (props) => {
-                        const {
-                            isValid,
-                        } = props;
-                        return (
-                            <Form className={classes.loginForm}>
-                                <FormikTextField
-                                    required
-                                    margin="dense"
-                                    name="username"
-                                    label="Username"
-                                />
-                                <FormikTextField
-                                    required
-                                    type="password"
-                                    margin="dense"
-                                    name="password"
-                                    label="Password"
-                                />
-                                {
-                                    errorMessage()
-                                }
-                                <Button
-                                    variant="contained"
-                                    type="submit"
-                                    disabled={!isValid}
-                                    color="primary"
-                                    className={classes.loginButton}
-                                >
-                                    Login
-                                </Button>
-                                <div className={classes.signupLink}>
-                                    <p className={classes.link} onClick={() => handleClick(history)} style={{cursor:"pointer"}}><span className={classes.newUserText}>New to SkyFox?</span>Signup here</p>         
-                                </div>
-                            </Form>
-                        );
-                    }
-                }
-            </Formik>
-        </div>
-    );
-}
+  const handleClick = (history) => {
+    history.push("/signup");
+  };
+
+  return (
+    <div className={classes.loginContainer}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleLogin}
+        validationSchema={formSchema}
+      >
+        {(props) => {
+          const { isValid } = props;
+          return (
+            <Form className={classes.loginForm}>
+              <FormikTextField
+                required
+                margin="dense"
+                name="username"
+                label="Username"
+              />
+              <FormikTextField
+                required
+                type="password"
+                margin="dense"
+                name="password"
+                label="Password"
+              />
+              {errorMessage()}
+              <Button
+                variant="contained"
+                type="submit"
+                disabled={!isValid}
+                color="primary"
+                className={classes.loginButton}
+              >
+                Login
+              </Button>
+              <div className={classes.signupLink}>
+                <p
+                  className={classes.link}
+                  onClick={() => handleClick(history)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <span className={classes.newUserText}>New to SkyFox?</span>
+                  Signup here
+                </p>
+              </div>
+            </Form>
+          );
+        }}
+      </Formik>
+    </div>
+  );
+};
 
 Login.propTypes = {
-    location: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    onLogin: PropTypes.func.isRequired
+  location: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default Login;

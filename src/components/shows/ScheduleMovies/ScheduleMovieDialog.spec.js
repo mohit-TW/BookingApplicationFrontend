@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import {fireEvent, render} from "@testing-library/react";
 import ScheduleMovieDialog from './ScheduleMovieDialog';
-import { FormikButton } from "../formik";
+import { FormikButton } from "../../formik";
 
 describe('Basic Rendering', () => { 
     const onClose = jest.fn();

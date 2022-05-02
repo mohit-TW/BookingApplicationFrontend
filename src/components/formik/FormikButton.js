@@ -1,15 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FormControl, Button } from "@material-ui/core";
-//import { useField } from "formik";
 
 const FormikButton = (props) => {
-    //const [field] = useField(props.name);
-    //const {onClick} = field;
 
   return (
     <FormControl>
-      <Button /*data-testid={props.id}*/
+      <Button
         variant={props.variant}
         type={props.type}
         color={props.color}

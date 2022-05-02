@@ -1,5 +1,11 @@
-import showsService from '../../services/showsService';
-export const handleSubmit = async (values, onClose) => {
+import showsService from "../../services/showsService";
+export const handleSubmit = async (
+  values,
+  onClose,
+  setStatus,
+  setMessage,
+  setShowScheduleMovieConfirmation
+) => {
   const payloads = values.slotIds.map((id) => {
     return {
       cost: values.cost,
@@ -13,9 +19,13 @@ export const handleSubmit = async (values, onClose) => {
       const response = await showsService.create(payload);
       return;
     });
-    window.location.reload(false);
+    setStatus(1);
+    setMessage("Success! Movie Scheduled");
   } catch (err) {
+    setStatus(0);
+    setMessage("Error! Cannot schedule the movie/s");
   } finally {
+    setShowScheduleMovieConfirmation(true);
     onClose();
   }
 };

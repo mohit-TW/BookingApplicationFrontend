@@ -19,12 +19,13 @@ import {
   handleSlotChange,
   handleCostChange,
 } from "./hooks/handleChanges";
+import ScheduleMovieConfirmation from "./ScheduleMovieConfirmation";
 
 const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
   const classes = styles();
   const handleClose = () => {
     setScheduledMovie(initialValues(date));
-    setScheduledMovie({...scheduledMovie, movieId: movies[0].value});
+    setScheduledMovie({ ...scheduledMovie, movieId: movies[0].value });
     setScheduleButtonDisable(true);
     onClose();
   };
@@ -32,6 +33,10 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
   const [scheduleButtonDisable, setScheduleButtonDisable] = useState(true);
   const { movies } = useMovies(scheduledMovie);
   const { slots } = useSlots(date, setBtnDisable);
+  const [showScheduleMovieConfirmation, setShowScheduleMovieConfirmation] =
+    useState(false);
+  const [status, setStatus] = useState(0);
+  const [message, setMessage] = useState('');
 
   return (
     <>
@@ -50,7 +55,7 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
           <CloseIcon className={classes.closeButton} onClick={handleClose} />
         </div>
         <div className={classes.dialogContent}>
-          <Formik initialValues={scheduledMovie} validationSchema={formSchema} >
+          <Formik initialValues={scheduledMovie} validationSchema={formSchema}>
             <Form className={classes.scheduleMovieForm}>
               <FormControl fullWidth>
                 <FormikSelect
@@ -60,7 +65,12 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
                   options={movies}
                   value={scheduledMovie.movieId}
                   onChange={(e) => {
-                    handleMovieChange(e, scheduledMovie, setScheduledMovie, setScheduleButtonDisable);
+                    handleMovieChange(
+                      e,
+                      scheduledMovie,
+                      setScheduledMovie,
+                      setScheduleButtonDisable
+                    );
                   }}
                 />
                 <Typography
@@ -75,7 +85,11 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
                   color="primary"
                   name="slotIds"
                   onChange={(e) =>
-                    handleSlotChange(e, scheduledMovie,setScheduleButtonDisable)
+                    handleSlotChange(
+                      e,
+                      scheduledMovie,
+                      setScheduleButtonDisable
+                    )
                   }
                 />
                 <Typography
@@ -94,7 +108,12 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
                   autoComplete="off"
                   value={scheduledMovie.cost}
                   onChange={(e) =>
-                    handleCostChange(e, scheduledMovie, setScheduledMovie,setScheduleButtonDisable)
+                    handleCostChange(
+                      e,
+                      scheduledMovie,
+                      setScheduledMovie,
+                      setScheduleButtonDisable
+                    )
                   }
                 />
               </FormControl>
@@ -106,7 +125,7 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
                   className={classes.scheduleButton}
                   disabled={scheduleButtonDisable}
                   onClick={() => {
-                    handleSubmit(scheduledMovie, onClose);
+                    handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
                   }}
                   name="SCHEDULE"
                 />
@@ -115,6 +134,15 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
           </Formik>
         </div>
       </Dialog>
+      <ScheduleMovieConfirmation
+        open={showScheduleMovieConfirmation}
+        onClose={() => {
+          window.location.reload(false);
+          handleClose();
+        }}
+        success={status}
+        message={message}
+      />
     </>
   );
 };

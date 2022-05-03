@@ -25,6 +25,8 @@ import SeatSelectionDialog from "./SeatSelectionDialog";
 import PosterDialog from "./PosterDialog";
 import FormikButton from "../formik/FormikButton";
 import ScheduleMovieDialog from "./ScheduleMovies/ScheduleMovieDialog";
+import { FeatureToggle} from "react-feature-toggles/lib";
+import useTogggles from '../toggles/hooks/useToggles'
 
 export default ({ location, history }) => {
   const classes = styles();
@@ -38,6 +40,7 @@ export default ({ location, history }) => {
   const [showPosterDialog, setShowPosterDialog] = useState(false);
   const [showScheduleMovieDialog, setShowScheduleMovieDialog] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
+  const {toggles, toggleNames} = useTogggles();
 
   const emptyShow = {
     id: "",
@@ -68,6 +71,7 @@ export default ({ location, history }) => {
           Shows ({showsDate.format(HEADER_DATE_FORMAT)})
         </Typography>
         <div className={classes.adminUtils}>
+        <FeatureToggle featureName={toggleNames.MOVIE_SCHEDULE}>
           <FormikButton
             variant="contained"
             type="submit"
@@ -79,6 +83,7 @@ export default ({ location, history }) => {
               setShowScheduleMovieDialog(true);
             }}
           />
+           </FeatureToggle>
           <ShowsRevenue
             showsRevenue={showsRevenue}
             showsRevenueLoading={showsRevenueLoading}

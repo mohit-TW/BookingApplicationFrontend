@@ -10,6 +10,8 @@ import {shallow} from "enzyme";
 import ShowsRevenue from "./ShowsRevenue";
 import FormikButton from "../formik/FormikButton";
 import ScheduleMovieDialog from "./ScheduleMovies/ScheduleMovieDialog";
+import useToggles from "../toggles/hooks/useToggles";
+import { FeatureToggleProvider} from "react-feature-toggles/lib";
 
 jest.mock("./services/dateService", () => ({
     dateFromSearchString: jest.fn(),
@@ -27,6 +29,11 @@ jest.mock("./hooks/useShowsRevenue", () => ({
     default: jest.fn()
 }));
 
+jest.mock("../toggles/hooks/useToggles", () => ({
+    __esModule: true,
+    default: jest.fn()
+}));
+
 jest.mock("./SeatSelectionDialog", () => {
     return () => <div>SeatSelection</div>;
 });
@@ -39,6 +46,7 @@ describe("Basic rendering and functionality", () => {
     let testHistory;
     let testLocation;
     let testShowDate;
+    let testToggles;
 
     beforeEach(() => {
         testHistory = {
@@ -52,6 +60,10 @@ describe("Basic rendering and functionality", () => {
         testShowDate = {
             format: jest.fn()
         };
+
+        testToggles = {
+                MOVIE_SCHEDULE: true
+        }
 
         when(dateFromSearchString).calledWith("testSearch").mockReturnValue(testShowDate);
         when(nextDateLocation).calledWith(testLocation, testShowDate).mockReturnValue("Next Location");
@@ -77,10 +89,21 @@ describe("Basic rendering and functionality", () => {
             showsRevenue: 549.99,
             showsRevenueLoading: false
         });
+        when(useToggles).calledWith().mockReturnValue({
+               toggleNames:{
+                MOVIE_SCHEDULE: 'MOVIE_SCHEDULE'
+                  },      
+              toggles:{
+                "MOVIE_SCHEDULE": true,
+              }
+        });
     });
 
     it("Should display the show info", () => {
-        const shows = render(<Shows history={testHistory} location={testLocation}/>);
+        const shows = render( 
+        <FeatureToggleProvider featureToggleList={testToggles}>
+            <Shows history={testHistory} location={testLocation}/>
+        </FeatureToggleProvider>);
 
         shows.getByText("Shows (Show Date)");
 
@@ -94,7 +117,10 @@ describe("Basic rendering and functionality", () => {
     });
 
     it("Should push to history if next or previous clicked", () => {
-        const shows = render(<Shows history={testHistory} location={testLocation}/>);
+        const shows = render( 
+        <FeatureToggleProvider featureToggleList={testToggles}>
+            <Shows history={testHistory} location={testLocation}/>
+        </FeatureToggleProvider>);
 
         const previousDayButton = shows.getByText("Previous Day");
         const nextDayButton = shows.getByText("Next Day");
@@ -108,7 +134,10 @@ describe("Basic rendering and functionality", () => {
     });
 
     it("Should display seat selection when a show is selected", () => {
-        const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
+        const {getByText, queryByText} = render( 
+        <FeatureToggleProvider featureToggleList={testToggles}>
+            <Shows history={testHistory} location={testLocation}/>
+        </FeatureToggleProvider>);
 
         expect(queryByText("SeatSelectionDialog")).toBeNull();
 
@@ -127,7 +156,11 @@ describe("Basic rendering and functionality", () => {
     });
     
     it("Should display poster when rendered", () => {
-        const {getAllByTestId} = render(<Shows history={testHistory} location={testLocation}/>);
+        const {getAllByTestId} = render(
+        <FeatureToggleProvider featureToggleList={testToggles}>
+            <Shows history={testHistory} location={testLocation}/>
+        </FeatureToggleProvider>);
+
         const posterLink = "http://dummy.jpg";
 
         const moviePosters = getAllByTestId("poster");
@@ -144,13 +177,31 @@ describe("Basic rendering and functionality", () => {
         expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
     });
 
-    it("should display the shedule movie dislog when schedule movie button is clicked", ()=>{
-        const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
+    it("should display the shedule movie dialog when schedule movie button is clicked", ()=>{
+        const {getByText, queryByText} = render(
+            <FeatureToggleProvider featureToggleList={testToggles}>
+                <Shows history={testHistory} location={testLocation}/>
+            </FeatureToggleProvider> 
+        );
 
         expect(queryByText("ScheduleMovieDialog")).toBeNull();
 
         fireEvent.click(getByText("SCHEDULE MOVIE"));
 
         expect(getByText("ScheduleMovie")).toBeTruthy();
+    }); 
+    
+    it("should not display the shedule movie button when feature is disabled", ()=>{
+        testToggles.MOVIE_SCHEDULE = false;
+
+        const {getByText, queryByText} = render(
+            <FeatureToggleProvider featureToggleList={testToggles}>
+                <Shows history={testHistory} location={testLocation}/>
+            </FeatureToggleProvider> 
+        );
+
+        expect(queryByText("ScheduleMovieDialog")).toBeNull();
+
+        expect(queryByText("SCHEDULE MOVIE")).toBeNull();
     });
 });

@@ -39,12 +39,8 @@ export default ({ location, history }) => {
   const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
   const [showPosterDialog, setShowPosterDialog] = useState(false);
   const [showScheduleMovieDialog, setShowScheduleMovieDialog] = useState(false);
-<<<<<<< HEAD
-  const [btnDisable, setBtnDisable] = useState(false);
   const {toggles, toggleNames} = useTogggles();
-=======
-  const [scheduleMovieBtnDisable, setScheduleMovieBtnDisable] = useState(false);
->>>>>>> 9a3389e (Trello-#38 | [Rhea/Rakshana] | Add. Test. for Movie Scheduling functionality.)
+  const [scheduleMovieBtnDisable, setScheduleMovieBtnDisable] = useState(true);
 
   const emptyShow = {
     id: "",

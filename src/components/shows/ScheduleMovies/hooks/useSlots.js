@@ -6,16 +6,17 @@ const useSlots = (date, setScheduleMovieBtnDisable) => {
   const [availableSlots, setAvailableSlots] = useState([]);
 
   useEffect(() => {
-    slotsService.fetchSlots(date).then((slot) => {
-      setAvailableSlots([...availableSlots, slot]);
-      if(slot.slots !== undefined){
-        assignSlots(slot);
-      }
-    });
+      slotsService.fetchSlots(date).then((slot) => {
+        setAvailableSlots([...availableSlots, slot]);
+        if (slot.slots !== undefined) {
+          assignSlots(slot);
+        }
+      });
+    
     // eslint-disable-next-line
   }, []);
 
-  const assignSlots = (slot) =>{
+  const assignSlots = (slot) => {
     const availSlots = slot.slots.map((obj) => {
       const temp = {
         id: obj.id,
@@ -25,9 +26,12 @@ const useSlots = (date, setScheduleMovieBtnDisable) => {
       return temp;
     });
     //console.log("avail: "+ availSlots.length);
-    if (availSlots.length !== 0) setSlots(availSlots);
+    if (availSlots.length !== 0) {
+      setSlots(availSlots);
+      setScheduleMovieBtnDisable(false);
+    }
     else setScheduleMovieBtnDisable(true);
-  }
+  };
 
   return {
     slots: slots,

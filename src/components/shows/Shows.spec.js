@@ -177,12 +177,17 @@ describe("Basic rendering and functionality", () => {
         expect(scheduleButton.prop("name")).toBe("SCHEDULE MOVIE");
     });
 
+<<<<<<< HEAD
     it("should display the shedule movie dialog when schedule movie button is clicked", ()=>{
         const {getByText, queryByText} = render(
             <FeatureToggleProvider featureToggleList={testToggles}>
                 <Shows history={testHistory} location={testLocation}/>
             </FeatureToggleProvider> 
         );
+=======
+    it("should display the schedule movie dialog when schedule movie button is clicked", ()=>{
+        const {getByText, queryByText} = render(<Shows history={testHistory} location={testLocation}/>);
+>>>>>>> 9a3389e (Trello-#38 | [Rhea/Rakshana] | Add. Test. for Movie Scheduling functionality.)
 
         expect(queryByText("ScheduleMovieDialog")).toBeNull();
 

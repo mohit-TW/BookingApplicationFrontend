@@ -1,5 +1,5 @@
 import {act, renderHook} from "@testing-library/react-hooks";
-import useAuth from "./useAuth";
+import Auth from "./useAuth";
 import {isLoggedIn, login, logout} from "../../../helpers/authService";
 import {when} from "jest-when";
 
@@ -12,9 +12,9 @@ jest.mock("../../../helpers/authService", () => ({
 
 describe("Basic logic", () => {
 
-    it("should respect user's logged in status initially", () => {
+    it("should respect r's logged in status initially", () => {
         isLoggedIn.mockReturnValue(true);
-        const renderHookResult = renderHook(() => useAuth());
+        const renderHookResult = renderHook(() => Auth());
         const {result, waitForNextUpdate} = renderHookResult;
 
         waitForNextUpdate();
@@ -24,39 +24,39 @@ describe("Basic logic", () => {
     });
 
     it("should login successfuly", async () => {
-        const testUsername = "testUsername";
+        const testrname = "testrname";
         const testPassword = "testPassword";
         isLoggedIn.mockReturnValue(true);
-        const renderHookResult = renderHook(() => useAuth());
+        const renderHookResult = renderHook(() => Auth());
         const {result} = renderHookResult;
-        when(login).calledWith(testUsername, testPassword).mockResolvedValue("userDetails");
+        when(login).calledWith(testrname, testPassword).mockResolvedValue("rDetails");
 
         const {handleLogin} = result.current;
 
-        let userDetails;
+        let rDetails;
         await act(async () => {
-            userDetails = await handleLogin(testUsername, testPassword);
+            rDetails = await handleLogin(testrname, testPassword);
         });
 
         const {isAuthenticated} = result.current;
-        // noinspection JSUnusedAssignment
-        expect(userDetails).toBe("userDetails");
+        // noinspection JSUndAssignment
+        expect(rDetails).toBe("rDetails");
         expect(isAuthenticated).toBe(true);
     });
 
     it("should not login if not authenticated", async () => {
-        const testUsername = "testUsername";
+        const testrname = "testrname";
         const testPassword = "testPassword";
         isLoggedIn.mockReturnValue(false);
-        const renderHookResult = renderHook(() => useAuth());
+        const renderHookResult = renderHook(() => Auth());
         const {result} = renderHookResult;
-        when(login).calledWith(testUsername, testPassword).mockRejectedValue("unused");
+        when(login).calledWith(testrname, testPassword).mockRejectedValue("und");
 
         const {handleLogin} = result.current;
 
         try {
             await act(async () => {
-                await handleLogin(testUsername, testPassword);
+                await handleLogin(testrname, testPassword);
                 fail("Should not authenticate");
             });
         } catch (e) {
@@ -67,7 +67,7 @@ describe("Basic logic", () => {
 
     it("should logout successfuly", () => {
         isLoggedIn.mockReturnValue(true);
-        const renderHookResult = renderHook(() => useAuth());
+        const renderHookResult = renderHook(() => Auth());
         const {result} = renderHookResult;
 
         const {handleLogout} = result.current;

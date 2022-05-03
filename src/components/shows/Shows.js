@@ -39,8 +39,12 @@ export default ({ location, history }) => {
   const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
   const [showPosterDialog, setShowPosterDialog] = useState(false);
   const [showScheduleMovieDialog, setShowScheduleMovieDialog] = useState(false);
+<<<<<<< HEAD
   const [btnDisable, setBtnDisable] = useState(false);
   const {toggles, toggleNames} = useTogggles();
+=======
+  const [scheduleMovieBtnDisable, setScheduleMovieBtnDisable] = useState(false);
+>>>>>>> 9a3389e (Trello-#38 | [Rhea/Rakshana] | Add. Test. for Movie Scheduling functionality.)
 
   const emptyShow = {
     id: "",
@@ -76,7 +80,7 @@ export default ({ location, history }) => {
             variant="contained"
             type="submit"
             color="primary"
-            disabled={btnDisable}
+            disabled={scheduleMovieBtnDisable}
             className={classes.scheduleMovieButton}
             name="SCHEDULE MOVIE"
             onClick={() => {
@@ -190,7 +194,7 @@ export default ({ location, history }) => {
         date={showsDate.format(QUERY_DATE_FORMAT)}
         open={showScheduleMovieDialog}
         onClose={()=>{setShowScheduleMovieDialog(false)}}
-        setBtnDisable={setBtnDisable}
+        setScheduleMovieBtnDisable={setScheduleMovieBtnDisable}
       />
     </>
   );

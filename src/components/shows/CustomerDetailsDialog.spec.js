@@ -69,7 +69,7 @@ describe("Basic rendering and functionality", () => {
 
         fireEvent.click(getByTestId("bookButton"));
 
-        const expectedPayload = {
+        const expected = {
             "customer": {"name": "Name", "phoneNumber": "1234567890"},
             "date": "2020-06-19",
             "noOfSeats": "2",
@@ -78,7 +78,7 @@ describe("Basic rendering and functionality", () => {
 
         await waitFor(() => {
             expect(bookingService.create).toHaveBeenCalledTimes(1);
-            expect(bookingService.create).toHaveBeenCalledWith(expectedPayload);
+            expect(bookingService.create).toHaveBeenCalledWith(expected);
         });
     });
 });

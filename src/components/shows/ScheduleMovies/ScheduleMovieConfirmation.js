@@ -4,7 +4,6 @@ import styles from "./styles/scheduleMovieConfirmationStyles";
 import Alert from "@material-ui/lab/Alert";
 const ScheduleMovieConfirmation = ({ open, onClose, success, message }) => {
   const handleClose = () => {
-    // reload
     onClose();
   };
   const classes = styles();
@@ -21,7 +20,7 @@ const ScheduleMovieConfirmation = ({ open, onClose, success, message }) => {
             </Alert>
           </Snackbar>
       );
-    } else if(success==0){
+    } else if(success===0){
       alert = (
         <Snackbar open={open}  onClose={handleClose} data-testid="alert" anchorOrigin={{ vertical: 'top',
         horizontal: 'center', }}>

@@ -5,7 +5,7 @@ const useMovies = (scheduleMovie) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    moviesService.fetchAllMovies().then((movieList) => {
+    moviesService.fetchAllMovies().then(movieList => {
        const result = movieList.map((movie)=>{
             return {
                 value: movie.id,

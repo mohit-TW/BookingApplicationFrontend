@@ -2,7 +2,6 @@ import React from 'react'
 import {Dialog, DialogContent, Typography} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert/Alert";
 import styles from "./styles/customerDetailsDialogStyles";
-import CloseIcon from "@material-ui/icons/Close";
 
 const BookingConfirmation = ({bookingConfirmation, showConfirmation, onClose}) => {
     const classes = styles();

@@ -1,4 +1,5 @@
 import showsService from "../../services/showsService";
+
 export const handleSubmit = async (
   values,
   onClose,
@@ -14,6 +15,7 @@ export const handleSubmit = async (
       slotId: Number(id),
     };
   });
+  
   try {
     payloads.map(async (payload, k) => {
       const response = await showsService.create(payload);

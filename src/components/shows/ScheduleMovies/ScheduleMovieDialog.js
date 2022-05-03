@@ -21,7 +21,7 @@ import {
 } from "./hooks/handleChanges";
 import ScheduleMovieConfirmation from "./ScheduleMovieConfirmation";
 
-const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
+const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable }) => {
   const classes = styles();
   const handleClose = () => {
     setScheduledMovie(initialValues(date));
@@ -32,7 +32,7 @@ const ScheduleMovieDialog = ({ date, open, onClose, setBtnDisable }) => {
   const [scheduledMovie, setScheduledMovie] = useState(initialValues(date));
   const [scheduleButtonDisable, setScheduleButtonDisable] = useState(true);
   const { movies } = useMovies(scheduledMovie);
-  const { slots } = useSlots(date, setBtnDisable);
+  const { slots } = useSlots(date, setScheduleMovieBtnDisable);
   const [showScheduleMovieConfirmation, setShowScheduleMovieConfirmation] =
     useState(false);
   const [status, setStatus] = useState(0);

@@ -16,6 +16,11 @@ export default makeStyles((theme) =>
         },
         bookShowButton: {
             margin: "16px 0px 15px 0px"
+        },
+        downloadButton: {
+            marginLeft: "10px",
+            marginBottom: "10px",
+            marginRight: "20px"
         }
     })
 );

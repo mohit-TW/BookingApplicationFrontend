@@ -45,7 +45,7 @@ const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, open, o
         };
 
         try {
-            const response = await bookingService.create(payload);
+            const response = await bookingService.bookWalkInCustomer(payload);
             setSuccess(true);
             updateShowsRevenue();
             setBookingConfirmation(response.data)

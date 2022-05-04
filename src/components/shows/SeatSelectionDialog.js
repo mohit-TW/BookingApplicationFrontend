@@ -8,6 +8,8 @@ import PropTypes from "prop-types";
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import PosterDialog from "./PosterDialog";
+import useBooking from "./hooks/useBooking";
+import BookingConfirmation from "./BookingConfirmation";
 
 const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) => {
     const [showCustomerDetails, setShowCustomerDetails] = useState(false);
@@ -15,12 +17,24 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
     const [showPosterDialog, setShowPosterDialog] = useState(false);
     const [selectedMoviePoster, setSelectedMoviePoster] = useState();
     const [selectedMovieName, setSelectedMovieName] = useState();
+    const [bookingConfirmation, setBookingConfirmation] = useState({})
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    const{handleBooking} = useBooking();
+    
     const classes = styles();
 
     const handleClose = () => {
         setSeats("1");
         onClose();
     };
+
+    const handleUserBooking = async () => {
+        const bc = await handleBooking(seats,selectedShow);
+        setBookingConfirmation(bc);
+        setShowConfirmation(true);
+    }
 
     return (
         <>
@@ -73,11 +87,12 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                                 </div>
                                 <Button variant="contained" color="primary"
                                         onClick={() => {
-                                            setShowCustomerDetails(true);
+                                            //setShowCustomerDetails(true);
+                                            handleUserBooking();
                                             onClose();
                                         }}
                                         className={classes.dialogButton}>
-                                    Next
+                                    BOOK
                                 </Button>
                             </div>
                         </div>
@@ -89,6 +104,9 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                 handleClose();
                 setShowCustomerDetails(false)
             }}/>
+
+            <BookingConfirmation bookingConfirmation={bookingConfirmation} showConfirmation={showConfirmation} 
+                        onClose={() => setShowConfirmation(false)}/>
         </>
     );
 }

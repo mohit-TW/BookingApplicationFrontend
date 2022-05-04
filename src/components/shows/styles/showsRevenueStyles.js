@@ -7,7 +7,8 @@ export default makeStyles((theme) =>
             display: "flex",
             alignSelf: "center",
             color: "green",
-            fontWeight: "bold"
+            fontWeight: "bold",
+            fontSize: "1.8em"
         },
         showsRevenueLoadingSpinner: {
             padding: "15px"

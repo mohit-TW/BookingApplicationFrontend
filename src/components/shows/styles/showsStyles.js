@@ -28,10 +28,11 @@ export default makeStyles((theme) =>
             fontWeight: "bold"
         },
         showsHeader: {
-            padding: "15px 0 0 15px",
+            padding: "10px 0 0 10px",
             display: "flex",
             fontWeight: "bold",
-            alignSelf: "center"
+            alignSelf: "center",
+            fontSize: "1.8em",
         },
         backdrop: {
             zIndex: theme.zIndex.drawer + 1,
@@ -39,10 +40,11 @@ export default makeStyles((theme) =>
         },
         listRoot: {
             width: '100%',
-            backgroundColor: theme.palette.background.paper
+            backgroundColor: theme.palette.background.paper,
         },
         listItem: {
             alignSelf: 'center',
+
         },
         price: {
             display: 'flex',
@@ -60,7 +62,7 @@ export default makeStyles((theme) =>
             justifyContent: 'space-between'
         },
         navigationButton: {
-            margin: "20px"
+            margin: "10px"
         },
         paper: {
             width: '200',
@@ -70,7 +72,7 @@ export default makeStyles((theme) =>
             padding: theme.spacing(2, 4, 3),
         },
         moviePoster: {
-            width: "60px",
+            width: "70px",
             height: "75px",
             margin: "7px",
             display: "block"

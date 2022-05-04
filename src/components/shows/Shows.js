@@ -98,12 +98,12 @@ export default ({ location, history}) => {
           }
         </div>
       </div>
-      <List className={classes.listRoot}>
+      <List className={classes.listRoot} >
         {shows.map((show) => (
           <div key={show.id} className={classes.showContainer}>
-            <ListItem style={{ cursor: "pointer" }}>
-              <ListItemAvatar>
-                <img data-testid="poster"
+            <ListItem style={{ cursor: "pointer", padding: "2px"}}>
+              <ListItemAvatar >
+                <img data-testid = "poster"
                   className={classes.moviePoster}
                   src={show.movie.posterLink}
                   alt={show.movie.name + " Poster"}

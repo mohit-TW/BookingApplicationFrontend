@@ -24,7 +24,7 @@ const PosterDialog = ({posterLink, name, open, onClose}) => {
                             <CloseIcon />
                          </IconButton>
                     </Typography>
-                <img src = {posterLink} alt={name + " Poster"} data-testid="movie-poster"/>
+                <img src = {posterLink} alt={name + " Poster"} data-testid="movie-poster" className={classes.image}/>
                 </div>
             </div>
             </Dialog>

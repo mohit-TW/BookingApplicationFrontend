@@ -38,6 +38,10 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable }
   const [status, setStatus] = useState(0);
   const [message, setMessage] = useState('');
 
+  const onFormSubmit = () =>{
+    handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
+  }
+
   return (
     <>
       <Dialog
@@ -55,7 +59,7 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable }
           <CloseIcon className={classes.closeButton} onClick={handleClose} />
         </div>
         <div className={classes.dialogContent}>
-          <Formik initialValues={scheduledMovie} validationSchema={formSchema}>
+          <Formik initialValues={scheduledMovie} validationSchema={formSchema} onSubmit={onFormSubmit}>
             <Form className={classes.scheduleMovieForm}>
               <FormControl fullWidth>
                 <FormikSelect
@@ -124,9 +128,9 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable }
                   color="primary"
                   className={classes.scheduleButton}
                   disabled={scheduleButtonDisable}
-                  onClick={() => {
-                    handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
-                  }}
+                  //onClick={() => {
+                    //handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
+                  //}}
                   name="SCHEDULE"
                 />
               </div>

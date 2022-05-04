@@ -165,26 +165,29 @@ const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticate
                     },
                   })
                 }
+                InputProps = {{
+                  endAdornment: <IconButton
+                  className={classes.eye}
+                  onClick={() => {
+                    setPasswordObjectList({
+                      ...passwordObjectList,
+                      oldPasswordObject: {
+                        ...passwordObjectList.oldPasswordObject,
+                        shown: !passwordObjectList.oldPasswordObject.shown,
+                      },
+                    });
+                  }}
+                >
+                  {passwordObjectList.oldPasswordObject.shown ? (
+                    <Visibility />
+                  ) : (
+                    <VisibilityOff />
+                  )}
+                </IconButton>
+                }}
               />
 
-              <IconButton
-                className={classes.eye}
-                onClick={() => {
-                  setPasswordObjectList({
-                    ...passwordObjectList,
-                    oldPasswordObject: {
-                      ...passwordObjectList.oldPasswordObject,
-                      shown: !passwordObjectList.oldPasswordObject.shown,
-                    },
-                  });
-                }}
-              >
-                {passwordObjectList.oldPasswordObject.shown ? (
-                  <Visibility />
-                ) : (
-                  <VisibilityOff />
-                )}
-              </IconButton>
+              
                 <Typography variant="body1" color="error">
                               {
                                 oldPasswordErrorMsg
@@ -221,25 +224,28 @@ const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticate
                     patternMismatch: handlePatterMismatch(e),
                   });
                 }}
-              />
-              <IconButton
-                className={classes.eye}
-                onClick={() => {
-                  setPasswordObjectList({
-                    ...passwordObjectList,
-                    newPasswordObject: {
-                      ...passwordObjectList.newPasswordObject,
-                      shown: !passwordObjectList.newPasswordObject.shown,
-                    },
-                  });
+                InputProps = {{
+                  endAdornment : <IconButton
+                  className={classes.eye}
+                  onClick={() => {
+                    setPasswordObjectList({
+                      ...passwordObjectList,
+                      newPasswordObject: {
+                        ...passwordObjectList.newPasswordObject,
+                        shown: !passwordObjectList.newPasswordObject.shown,
+                      },
+                    });
+                  }}
+                >
+                  {passwordObjectList.newPasswordObject.shown ? (
+                    <Visibility />
+                  ) : (
+                    <VisibilityOff />
+                  )}
+                </IconButton>
                 }}
-              >
-                {passwordObjectList.newPasswordObject.shown ? (
-                  <Visibility />
-                ) : (
-                  <VisibilityOff />
-                )}
-              </IconButton>
+              />
+              
 
               <Typography variant="body1" color="error">
                 {errorMsgObj.patternMismatch}
@@ -278,25 +284,28 @@ const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticate
                     },
                   });
                 }}
-              />
-              <IconButton
-                className={classes.eye}
-                onClick={() => {
-                  setPasswordObjectList({
-                    ...passwordObjectList,
-                    confirmNewPasswordObject: {
-                      ...passwordObjectList.confirmNewPasswordObject,
-                      shown: !passwordObjectList.confirmNewPasswordObject.shown,
-                    },
-                  });
+                InputProps = {{
+                  endAdornment: <IconButton
+                  className={classes.eye}
+                  onClick={() => {
+                    setPasswordObjectList({
+                      ...passwordObjectList,
+                      confirmNewPasswordObject: {
+                        ...passwordObjectList.confirmNewPasswordObject,
+                        shown: !passwordObjectList.confirmNewPasswordObject.shown,
+                      },
+                    });
+                  }}
+                >
+                  {passwordObjectList.confirmNewPasswordObject.shown ? (
+                    <Visibility />
+                  ) : (
+                    <VisibilityOff />
+                  )}
+                </IconButton>
                 }}
-              >
-                {passwordObjectList.confirmNewPasswordObject.shown ? (
-                  <Visibility />
-                ) : (
-                  <VisibilityOff />
-                )}
-              </IconButton>
+              />
+              
               <Typography variant="body1" color="error">
                 {errorMsgObj.passwordMismatch}
               </Typography>

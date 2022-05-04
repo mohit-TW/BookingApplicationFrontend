@@ -24,14 +24,14 @@ export default ({history,location, isAuthenticated}) => {
           </Typography>
         </div>
         <div>
-          <Typography variant="h6" className={classes.lbl} data-testid="username">
-            Username: {user.username}
-          </Typography>
           {user.name === null ? null : (
             <Typography variant="h6" className={classes.lbl}>
               Name: {user.name}
             </Typography>
           )}
+          <Typography variant="h6" className={classes.lbl} data-testid="username">
+            Username: {user.username}
+          </Typography>
           {user.dob === null ? null : (
             <Typography variant="h6" className={classes.lbl}>
               Date of Birth: {user.dob}

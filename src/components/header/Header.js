@@ -35,7 +35,7 @@ const Header = ({ onLogout, isAuthenticated, username}) => {
   const userProfileSection = () => {
     return (
       <div className={classes.personProfileIcon}>
-        <p>Welcome, {userName}</p>
+        <p>Welcome, {userName}!</p>
         <Link to="/userProfile">
           <IconButton className={classes.profileIcon}>
             <PersonIcon />

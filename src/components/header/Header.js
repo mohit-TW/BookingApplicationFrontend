@@ -8,12 +8,15 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import useUser from "../user/hooks/useUser";
 import userService from "../user/services/userService";
+import { FeatureToggle} from "react-feature-toggles/lib";
+import useTogggles from '../toggles/hooks/useToggles'
 
 
 const Header = ({ onLogout, isAuthenticated, username}) => {
   const classes = styles();
 
   const [userName, setUsername] = useState(username);
+  const {toggles, toggleNames} = useTogggles();
 
   useEffect(()=> {
     if(username ==='' && isAuthenticated){
@@ -36,11 +39,13 @@ const Header = ({ onLogout, isAuthenticated, username}) => {
     return (
       <div className={classes.personProfileIcon}>
         <p>Welcome, {userName}!</p>
+        <FeatureToggle featureName={toggleNames.VIEW_USER_PROFILE}>
         <Link to="/userProfile">
-          <IconButton className={classes.profileIcon}>
+          <IconButton className={classes.profileIcon} data-testid="profileIcon">
             <PersonIcon />
           </IconButton>
         </Link>
+        </FeatureToggle>
       </div>
     );
   };

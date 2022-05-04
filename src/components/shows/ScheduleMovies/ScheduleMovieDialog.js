@@ -21,7 +21,7 @@ import {
 } from "./hooks/handleChanges";
 import ScheduleMovieConfirmation from "./ScheduleMovieConfirmation";
 
-const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable }) => {
+const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable}) => {
   const classes = styles();
   const handleClose = () => {
     setScheduledMovie(initialValues(date));

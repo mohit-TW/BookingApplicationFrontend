@@ -12,7 +12,6 @@ const useSlots = (date, setScheduleMovieBtnDisable) => {
           assignSlots(slot);
         }
       });
-    
     // eslint-disable-next-line
   }, []);
 

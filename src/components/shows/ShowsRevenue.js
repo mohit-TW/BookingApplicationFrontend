@@ -19,6 +19,7 @@ const ShowsRevenue = ({showsRevenue, showsRevenueLoading}) => {
                     : (
                         <Typography variant="h5" color="secondary" className={classes.showsRevenueContainer}>
                             Revenue: {`${INR_SYMBOL}${showsRevenue}`}
+                            
                         </Typography>
                     )
             }

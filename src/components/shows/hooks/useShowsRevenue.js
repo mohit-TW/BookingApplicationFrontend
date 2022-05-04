@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {QUERY_DATE_FORMAT} from "../../../Constants";
+import { useEffect, useState } from "react";
+import { QUERY_DATE_FORMAT } from "../../../Constants";
 import showsService from "../services/showsService";
 
 const useShowsRevenue = (showsDate) => {
@@ -7,7 +7,7 @@ const useShowsRevenue = (showsDate) => {
     const [showsRevenue, setShowsRevenue] = useState(0);
 
     useEffect(() => {
-        updateShowsRevenue();
+            updateShowsRevenue();
         // eslint-disable-next-line
     }, []);
 

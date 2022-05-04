@@ -18,6 +18,7 @@ describe("Basic logic", () => {
       dob: null,
       mobileNo: null,
       email: null,
+      role: "ADMIN"
     });
   });
 
@@ -32,6 +33,7 @@ describe("Basic logic", () => {
       dob: null,
       mobileNo: null,
       email: null,
+      role: ""
     });
   });
 
@@ -48,6 +50,7 @@ describe("Basic logic", () => {
       dob: null,
       mobileNo: null,
       email: null,
+      role: "ADMIN",
     });
   });
 });

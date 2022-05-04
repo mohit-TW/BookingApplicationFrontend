@@ -8,7 +8,6 @@ import '@testing-library/jest-dom/extend-expect';
 import useToggles from "../toggles/hooks/useToggles";
 import { FeatureToggleProvider} from "react-feature-toggles/lib";
 
-
 jest.mock("../toggles/hooks/useToggles", () => ({
   __esModule: true,
   default: jest.fn()
@@ -71,7 +70,7 @@ when(useToggles).calledWith().mockReturnValue({
   
   });
 
-  describe("On unAuthenticated", () => {
+  describe("On not authenticated", () => {
     it("Should not render the logout section if not authenticated", () => {
       const headerComponent = shallow(
         <Header isAuthenticated={false} onLogout={testOnLogout} />

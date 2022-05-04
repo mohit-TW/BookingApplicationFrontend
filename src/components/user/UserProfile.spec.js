@@ -80,13 +80,4 @@ describe("should not display", () => {
   const testToggles = {
     CHANGE_PASSWORD: false,
   };
-  it("Should not have Change password button when feature disabled", () => {
-    const { queryByText } = render(
-      <FeatureToggleProvider featureToggleList={testToggles}>
-        <UserProfile />
-      </FeatureToggleProvider>
-    );
-
-    expect(queryByText("CHANGE PASSWORD")).toBeNull();
-  });
 });

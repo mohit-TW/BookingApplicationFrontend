@@ -10,6 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import PosterDialog from "./PosterDialog";
 import useBooking from "./hooks/useBooking";
 import BookingConfirmation from "./BookingConfirmation";
+import useUser from "../user/hooks/useUser";
 
 const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) => {
     const [showCustomerDetails, setShowCustomerDetails] = useState(false);
@@ -25,14 +26,16 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
     
     const classes = styles();
 
+    const {user} = useUser();
+
     const handleClose = () => {
         setSeats("1");
         onClose();
     };
 
     const handleUserBooking = async () => {
-        const bc = await handleBooking(seats,selectedShow);
-        setBookingConfirmation(bc);
+        const bookingResponse = await handleBooking(seats,selectedShow);
+        setBookingConfirmation(bookingResponse);
         setShowConfirmation(true);
     }
 
@@ -85,15 +88,29 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                                         {`${INR_SYMBOL}${(selectedShow.cost * seats).toFixed(2)}`}
                                     </Typography>
                                 </div>
+                                {user.role === "ADMIN" ? 
+                                <>
                                 <Button variant="contained" color="primary"
-                                        onClick={() => {
-                                            //setShowCustomerDetails(true);
-                                            handleUserBooking();
-                                            onClose();
-                                        }}
-                                        className={classes.dialogButton}>
-                                    BOOK
+                                onClick={() => {
+                                    setShowCustomerDetails(true);
+                                    onClose();
+                                }}>
+                                    NEXT
                                 </Button>
+                                </>:<>
+                                <Button variant="contained" color="primary"
+                                            onClick={() => {
+                                                //setShowCustomerDetails(true);
+                                                handleUserBooking();
+                                                onClose();
+                                            }}
+                                            className={classes.dialogButton}>
+                                        BOOK
+                                    </Button>
+                                </ >     
+                                    
+                            }
+                                
                             </div>
                         </div>
                     </div>

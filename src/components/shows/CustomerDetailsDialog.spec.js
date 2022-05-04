@@ -8,7 +8,7 @@ import moment from "moment";
 jest.mock("./services/bookingService", () => ({
     __esModule: true,
     default: {
-        create: jest.fn()
+        bookWalkInCustomer: jest.fn()
     }
 }));
 
@@ -52,7 +52,7 @@ describe("Basic rendering and functionality", () => {
             format: testFormat
         });
 
-        when(bookingService.create).calledWith({name: "Name", phoneNumber: "1234567890"})
+        when(bookingService.bookWalkInCustomer).calledWith({name: "Name", phoneNumber: "1234567890"})
             .mockResolvedValue("");
 
         fireEvent.change(getByTestId("name"), {
@@ -77,8 +77,8 @@ describe("Basic rendering and functionality", () => {
         };
 
         await waitFor(() => {
-            expect(bookingService.create).toHaveBeenCalledTimes(1);
-            expect(bookingService.create).toHaveBeenCalledWith(expected);
+            expect(bookingService.bookWalkInCustomer).toHaveBeenCalledTimes(1);
+            expect(bookingService.bookWalkInCustomer).toHaveBeenCalledWith(expected);
         });
     });
 });

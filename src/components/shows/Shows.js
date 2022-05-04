@@ -115,10 +115,10 @@ export default ({ location, history}) => {
                 />
               </ListItemAvatar>
               <ListItemText
-                onClick={user.role === "ADMIN" ? () => {
+                onClick={() => {
                   setSelectedShow(show);
                   setShowSelectSeatDialog(true);
-                } : undefined}
+                } }
                 primary={show.movie.name}
                 secondary={
                   <>

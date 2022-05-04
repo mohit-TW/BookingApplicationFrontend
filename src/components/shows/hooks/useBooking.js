@@ -4,7 +4,7 @@ import bookingService from "../services/bookingService";
 import moment from "moment";
 
 export default () => {
-    const user = useUser();
+    const {user} = useUser();
 
     const handleBooking = async (seats,selectedShow) => {
         const today = moment().format("YYYY-MM-DD");

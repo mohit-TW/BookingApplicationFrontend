@@ -1,10 +1,17 @@
 import React from "react";
 import {fireEvent, render} from "@testing-library/react";
 import SeatSelectionDialog from "./SeatSelectionDialog";
+import useUser from "../user/hooks/useUser";
+import { when } from "jest-when";
 
 jest.mock("./CustomerDetailsDialog", () => {
     return ({open}) => <div>Customer Details is {open ? "open" : "closed"}</div>
 });
+
+jest.mock("../user/hooks/useUser", () => ({
+    __esModule: true,
+    default: jest.fn()
+}));
 
 describe("Basic rendering and functionality", () => {
     const openDialog = true;
@@ -22,6 +29,14 @@ describe("Basic rendering and functionality", () => {
         },
         slot: {startTime: "start time 1"}
     };
+    
+    beforeEach(()=>{
+        when(useUser).calledWith().mockReturnValue({
+            user:{
+                role: "ADMIN",
+            },
+        });
+    })
 
     it("Should display the show info", () => {
         const {queryByText, queryByDisplayValue} = render(<SeatSelectionDialog selectedShow={selectedShow}
@@ -53,7 +68,7 @@ describe("Basic rendering and functionality", () => {
 
         expect(getByText("Customer Details is closed")).toBeTruthy();
 
-        fireEvent.click(getByText("Next"));
+        fireEvent.click(getByText("NEXT"));
 
         expect(getByText("Customer Details is open")).toBeTruthy();
     });

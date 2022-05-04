@@ -31,6 +31,6 @@ fileignoreconfig:
 - filename: src/components/shows/ScheduleMovies/services/moviesService.spec.js
   checksum: 5eec57434855e886f42975de3c3ba502374926faa22c1b7f8997797b27c6229d
 - filename: yarn.lock
-  checksum: 8fce613231ebf8dc34bcb38414b28dbee46e28e1819b04bb30df96c8ddf57041
+  checksum: 42c032bbe093052f9c92c044ed318a6be044e6021f10542a455b89cc97aef067
 - filename: package-lock.json
   checksum: ff114911941192a74684a735b15a8e8aa901107339b96caaf328640ebd783757

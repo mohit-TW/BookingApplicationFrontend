@@ -15,7 +15,7 @@ fileignoreconfig:
 - filename: src/components/user/ChangePasswordConfirmation.js
   checksum: 0e8f9ce5deb11526ce1636bf21bbc6207229991656227b56de21ab402b0c7d67
 - filename: src/components/user/UserProfile.spec.js
-  checksum: 01c8d6acca2c2e39b22d8eb538e6fd58dd047fca4181ba5001447dfe7a0667a7
+  checksum: 2b01d0b4663b47a7a3e1a058588f423c574e86a4760a2748023bd3e54d12c672
 - filename: src/components/user/ChangePasswordDialog.js
   checksum: 6a2089dcfe983831cfd995389e822d70f7ab49947ae5789b6653e7cdaabc3d1c
 - filename: src/components/shows/PosterDialog.spec.js

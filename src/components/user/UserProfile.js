@@ -4,6 +4,8 @@ import { Typography } from "@material-ui/core";
 import ChangePasswordDialog from "./ChangePasswordDialog";
 import { FormikButton } from "../formik";
 import useUser from "./hooks/useUser";
+import { FeatureToggle} from "react-feature-toggles/lib";
+import useTogggles from '../toggles/hooks/useToggles'
 
 export default ({history,location, isAuthenticated}) => {
   const classes = styles();
@@ -14,9 +16,10 @@ export default ({history,location, isAuthenticated}) => {
 
   const [showChangePasswordDialog, setShowChangePasswordDialog] =
     useState(false);
+  const {toggles, toggleNames} = useTogggles();
+
   return (
-    <>
-      
+    <>   
       <div className={classes.userProfile}>
         <div className={classes.cardHeader}>
           <Typography variant="h4" className={classes.userHeader}>
@@ -47,6 +50,7 @@ export default ({history,location, isAuthenticated}) => {
               Mobile Number: {user.mobileNo}
             </Typography>
           )}
+          <FeatureToggle featureName={toggleNames.CHANGE_PASSWORD}>
           <FormikButton
             variant="contained"
             color="primary"
@@ -55,9 +59,8 @@ export default ({history,location, isAuthenticated}) => {
             }}
             className={classes.Btn}
             name="CHANGE PASSWORD"
-            data-testid="button-1"
-
-          />
+            data-testid="button-1"        />
+          </FeatureToggle>
           <ChangePasswordDialog
             open={showChangePasswordDialog}
             onClose={() => {

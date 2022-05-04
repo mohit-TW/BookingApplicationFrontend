@@ -84,9 +84,14 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                                                    inputProps={{step: "1", min: "1", max: "15"}}
                                                    onChange={(e) => setSeats(e.target.value)}/>
                                     </div>
-                                    <Typography variant="subtitle1" color="secondary">
-                                        {`${INR_SYMBOL}${(selectedShow.cost * seats).toFixed(2)}`}
-                                    </Typography>
+                                    <div className={classes.amountDisplay}>
+                                        
+                                        <Typography variant="subtitle1" color="secondary" className={classes.amount} label="Amount">
+
+                                            {`${INR_SYMBOL}${(selectedShow.cost * seats).toFixed(2)}`}
+                                        </Typography>
+                                    </div>
+                                    
                                 </div>
                                 {user.role === "ADMIN" ? 
                                 <>

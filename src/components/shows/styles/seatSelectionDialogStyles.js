@@ -77,6 +77,12 @@ export default makeStyles((theme) =>
                 width: "130%",
                 height: "90%",
 
+        },
+        amountDisplay: {
+            marginLeft: "20px",
+        },
+        amount: {
+            marginTop: "36px",
         }
     })
 );

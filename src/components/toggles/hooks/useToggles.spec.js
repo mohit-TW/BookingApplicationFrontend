@@ -23,14 +23,14 @@ describe("Basic logic", () => {
         expect(toggles).toEqual({
             "MOVIE_SCHEDULE": true,
             "CHANGE_PASSWORD": true,
-            "CUSTOMER_SIGN_UP" : true,
-            "VIEW_USER_PROFILE" : true
+            "VIEW_USER_PROFILE" : true,
+            "CUSTOMER_BOOKING" : true
         });
         expect(toggleNames).toEqual({
             MOVIE_SCHEDULE: 'MOVIE_SCHEDULE',
             CHANGE_PASSWORD: 'CHANGE_PASSWORD',
-            CUSTOMER_SIGN_UP : 'CUSTOMER_SIGN_UP',
-            VIEW_USER_PROFILE : 'VIEW_USER_PROFILE'
+            VIEW_USER_PROFILE : 'VIEW_USER_PROFILE',
+            CUSTOMER_BOOKING : 'CUSTOMER_BOOKING'
         });
     });
 
@@ -42,7 +42,8 @@ describe("Basic logic", () => {
 
         expect(toggles).toEqual({"MOVIE_SCHEDULE": true,
             "CHANGE_PASSWORD": false,
-            "CUSTOMER_SIGN_UP": true,
-            "VIEW_USER_PROFILE": true});
+            "VIEW_USER_PROFILE": true,
+            "CUSTOMER_BOOKING" : true
+        });
     });
 });

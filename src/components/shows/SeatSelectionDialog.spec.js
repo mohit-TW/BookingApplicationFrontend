@@ -3,6 +3,8 @@ import {fireEvent, render} from "@testing-library/react";
 import SeatSelectionDialog from "./SeatSelectionDialog";
 import useUser from "../user/hooks/useUser";
 import { when } from "jest-when";
+import useToggles from "../toggles/hooks/useToggles";
+import { FeatureToggleProvider } from "react-feature-toggles/lib";
 
 jest.mock("./CustomerDetailsDialog", () => {
     return ({open}) => <div>Customer Details is {open ? "open" : "closed"}</div>
@@ -12,6 +14,25 @@ jest.mock("../user/hooks/useUser", () => ({
     __esModule: true,
     default: jest.fn()
 }));
+
+jest.mock("../toggles/hooks/useToggles", () => ({
+    __esModule: true,
+    default: jest.fn()
+}));
+
+when(useToggles).calledWith().mockReturnValue({
+    toggleNames: {
+        CUSTOMER_BOOKING : 'CUSTOMER_BOOKING'
+    },
+    toggles: {
+        "MOVIE_SCHEDULE": false,
+    }
+});
+when(useUser).calledWith().mockReturnValue({
+    user:{
+        role: "ADMIN",
+    },
+});
 
 describe("Basic rendering and functionality", () => {
     const openDialog = true;
@@ -80,6 +101,7 @@ describe("Basic rendering and functionality", () => {
 
         expect(getByTestId("poster-image").getAttribute("src")).toBe("http://dummy.jpg");
     })
+
 
     it("Should close the dialog when the cross button is clicked", () => {
         const {getByTestId} =  render(<SeatSelectionDialog selectedShow={selectedShow} open={openDialog}

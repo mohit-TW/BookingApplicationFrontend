@@ -88,7 +88,7 @@ const ChangePasswordDialog = ({ open, onClose, history, location, isAuthenticate
     },
     (error) => {
         setErrorShown(true);
-        setOldPasswordErrorMsg(error.response.data.message);
+        setOldPasswordErrorMsg(error.response.data.details[0]);
 
 
     }

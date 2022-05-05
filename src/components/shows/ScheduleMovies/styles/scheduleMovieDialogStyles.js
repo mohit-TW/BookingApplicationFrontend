@@ -51,4 +51,9 @@ export default makeStyles((theme) => ({
     //marginLeft: "350px",
     //marginTop: "8px",
   },
+  Cost:{
+    "& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
+      display: "none"
+    }
+  }
 }));

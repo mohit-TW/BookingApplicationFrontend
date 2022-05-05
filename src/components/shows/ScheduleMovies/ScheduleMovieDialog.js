@@ -107,9 +107,10 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable})
                   required
                   margin="dense"
                   name="cost"
-                  label="Cost"
+                  
                   type="number"
                   autoComplete="off"
+                  className = {classes.Cost}
                   value={scheduledMovie.cost}
                   onChange={(e) =>
                     handleCostChange(

@@ -25,10 +25,12 @@ export const handleCostChange = (e, scheduleMovie, setScheduleMovie, setSchedule
 
 const handleScheduleMovieButton = (scheduleMovie) => {
   let result = true;
+  console.log(scheduleMovie.cost.length);
+  const pattern = new RegExp('/^[1-9]{1,4}(\.[0-9]{0,2})?$/');
   if (
     scheduleMovie.movieId !== "" &&
     scheduleMovie.slotIds.length >= 1 &&
-    scheduleMovie.cost !== ""
+    !pattern.test(scheduleMovie.cost)
   ) {
     result = false;
   }

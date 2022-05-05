@@ -26,10 +26,9 @@ export default makeStyles((theme) => ({
     paddingTop: "5%",
   },
   dialogContent: {
-    display: "flex",
-    flexDirection: "row",
     marginLeft: "27px",
     marginTop: "6px",
+    width:"90%"
   },
   closeButton: {
     flexDirection: "row",
@@ -37,9 +36,9 @@ export default makeStyles((theme) => ({
     marginRight: "5%",
   },
   eye: {
-    marginLeft: "440px",
+    marginLeft: "350px",
     flexDirection: "row",
-    marginTop: "-40px",
+    //marginTop: "-40px",
     zIndex: "2",
   },
 }));

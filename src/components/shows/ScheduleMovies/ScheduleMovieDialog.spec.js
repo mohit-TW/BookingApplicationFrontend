@@ -27,7 +27,7 @@ describe("Basic Rendering", () => {
 
     expect(scheduleHeaderDiv.at(0).text()).toBe("Schedule Movie");
     expect(movieDropdown.prop("name")).toBe("movieId");
-    expect(componentTypography.length).toBe(2);
+    expect(componentTypography.length).toBe(1);
     expect(slotCheckboxes.prop("name")).toBe("slotIds");
     expect(costTextField.prop("name")).toBe("cost");
     expect(scheduleButton.prop("name")).toBe("SCHEDULE");

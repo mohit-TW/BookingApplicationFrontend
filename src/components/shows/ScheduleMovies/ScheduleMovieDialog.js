@@ -38,8 +38,11 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable})
   const [status, setStatus] = useState(0);
   const [message, setMessage] = useState('');
 
-  const onFormSubmit = () =>{
-    handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
+  const onFormSubmit = (values) =>{
+    console.log(values);
+    values.slotIds = scheduledMovie.slotIds;
+    console.log(values);
+    handleSubmit(values, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
   }
 
   return (
@@ -67,15 +70,6 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable})
                   name="movieId"
                   dropdownLabel={"Movies"}
                   options={movies}
-                  value={scheduledMovie.movieId}
-                  onChange={(e) => {
-                    handleMovieChange(
-                      e,
-                      scheduledMovie,
-                      setScheduledMovie,
-                      setScheduleButtonDisable
-                    );
-                  }}
                 />
                 <Typography
                   variant="h6"
@@ -96,30 +90,14 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable})
                     )
                   }
                 />
-                <Typography
-                  variant="h6"
-                  color="primary"
-                  className={classes.lbl}
-                >
-                  Cost
-                </Typography>
                 <FormikTextField
                   required
                   margin="dense"
                   name="cost"
-                  
+                  label="Cost"
                   type="number"
                   autoComplete="off"
                   className = {classes.Cost}
-                  value={scheduledMovie.cost}
-                  onChange={(e) =>
-                    handleCostChange(
-                      e,
-                      scheduledMovie,
-                      setScheduledMovie,
-                      setScheduleButtonDisable
-                    )
-                  }
                 />
               </FormControl>
               <div className={classes.scheduleButton}>
@@ -129,9 +107,7 @@ const ScheduleMovieDialog = ({ date, open, onClose, setScheduleMovieBtnDisable})
                   color="primary"
                   className={classes.scheduleButton}
                   disabled={scheduleButtonDisable}
-                  //onClick={() => {
-                    //handleSubmit(scheduledMovie, onClose, setStatus, setMessage, setShowScheduleMovieConfirmation);
-                  //}}
+                  
                   name="SCHEDULE"
                 />
               </div>

@@ -18,7 +18,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginLeft: "9%"
+    marginLeft: "9%",
   },
   dialogHeader: {
     fontWeight: "bold",
@@ -28,7 +28,8 @@ export default makeStyles((theme) => ({
   dialogContent: {
     marginLeft: "27px",
     marginTop: "6px",
-    width:"90%"
+    justifyContent:"space-between",
+    marginRight:"27px"
   },
   closeButton: {
     flexDirection: "row",
@@ -36,9 +37,8 @@ export default makeStyles((theme) => ({
     marginRight: "5%",
   },
   eye: {
-    marginLeft: "350px",
+    margin:"0px",
     flexDirection: "row",
-    //marginTop: "-40px",
     zIndex: "2",
   },
 }));
